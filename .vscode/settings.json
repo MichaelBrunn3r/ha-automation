@@ -1,0 +1,9 @@
+{
+  "yaml.schemas": {
+    "schemas/automation_blueprint.schema.json": [
+      "/blueprints/*.yaml",
+      "/test/schemas/*.yaml"
+    ]
+  },
+  "yaml.customTags": ["!input"]
+}

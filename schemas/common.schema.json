@@ -1,0 +1,11 @@
+{
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/common.schema.json",
+  "$defs": {
+    "template-string": {
+      "description": "A template string.",
+      "type": "string",
+      "pattern": ".*(\\{\\{.*\\}\\}).*",
+      "$comment": "https://www.home-assistant.io/docs/configuration/templating/#important-template-rules"
+    }
+  }
+}

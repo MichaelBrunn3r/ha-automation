@@ -1,0 +1,5 @@
+1. [Blueprint Schema](https://www.home-assistant.io/docs/blueprint/schema/)
+2. [JSON Schema: Getting started](https://json-schema.org/learn/getting-started-step-by-step.html)
+3. [Awesome HA Blueprints](https://github.com/EPMatt/awesome-ha-blueprints)
+4. [json-schema-benchmark (draft7)](https://github.com/ebdrup/json-schema-benchmark/tree/master/draft7)
+5. [Ajv JSON schema validator](https://github.com/ajv-validator/ajv)
