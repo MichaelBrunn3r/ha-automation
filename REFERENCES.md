@@ -3,3 +3,5 @@
 3. [Awesome HA Blueprints](https://github.com/EPMatt/awesome-ha-blueprints)
 4. [json-schema-benchmark (draft7)](https://github.com/ebdrup/json-schema-benchmark/tree/master/draft7)
 5. [Ajv JSON schema validator](https://github.com/ajv-validator/ajv)
+6. [Unable to import ESM .ts module in node](https://stackoverflow.com/questions/63742790/unable-to-import-esm-ts-module-in-node/65163089#65163089)
+7. [ERR_IMPORT_ASSERTION_TYPE_MISSING for import of json file](https://stackoverflow.com/questions/70106880/err-import-assertion-type-missing-for-import-of-json-file)
