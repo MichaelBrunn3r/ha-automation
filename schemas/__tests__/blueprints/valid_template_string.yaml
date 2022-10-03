@@ -1,11 +1,8 @@
 blueprint:
-  name: A blueprint
-  domain: automation
-
+  name: "A blueprint"
+  domain: "automation"
 trigger:
-  - id: A trigger
-
+  - d: "A trigger"
 condition: "{{ asdf }}"
-
 action:
   - some_action: {}

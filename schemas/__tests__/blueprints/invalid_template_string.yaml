@@ -1,0 +1,8 @@
+blueprint:
+  name: "A blueprint"
+  domain: "automation"
+trigger:
+  - id: "A trigger"
+condition: "{{ asdf }"
+action:
+  - some_action: {}

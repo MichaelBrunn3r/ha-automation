@@ -5,3 +5,6 @@
 5. [Ajv JSON schema validator](https://github.com/ajv-validator/ajv)
 6. [Unable to import ESM .ts module in node](https://stackoverflow.com/questions/63742790/unable-to-import-esm-ts-module-in-node/65163089#65163089)
 7. [ERR_IMPORT_ASSERTION_TYPE_MISSING for import of json file](https://stackoverflow.com/questions/70106880/err-import-assertion-type-missing-for-import-of-json-file)
+8. [Test JSON schema with AJV and Jest](https://moshfeu.medium.com/test-json-schema-with-ajv-and-jest-c1d2984234c9)
+9. [Jest config: globalSetup](https://jestjs.io/docs/configuration#globalsetup-string)
+10. [Going too far with Jest Custom Matchers in TypeScript](https://haspar.us/notes/adding-jest-custom-matchers-in-typescript/)
