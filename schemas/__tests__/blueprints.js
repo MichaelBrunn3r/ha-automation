@@ -16,11 +16,14 @@ test.each(['blueprints/invalid_template_string.yaml', 'blueprints/invalid_multil
   }
 );
 
-test.each(['blueprints/examples/on_off_schedule_state_persistence.yaml'])('example blueprint %s is valid', (file) => {
-  expect(
-    yaml.load(fs.readFileSync(path.join(__dirname, file), 'utf8'), {
-      //@ts-ignore
-      schema: globalThis.BLUEPRINT_SCHEMA
-    })
-  ).toBeValidBlueprint();
-});
+test.each(fs.readdirSync(path.join(__dirname, 'blueprints/examples')).map((f) => path.join('blueprints/examples', f)))(
+  '%s is valid',
+  (file) => {
+    expect(
+      yaml.load(fs.readFileSync(path.join(__dirname, file), 'utf8'), {
+        //@ts-ignore
+        schema: globalThis.BLUEPRINT_SCHEMA
+      })
+    ).toBeValidBlueprint();
+  }
+);

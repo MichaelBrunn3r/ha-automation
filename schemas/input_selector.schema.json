@@ -1,0 +1,487 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "The selector to use for this input field. A selector defines how the input is displayed in the frontend UI\nhttps://www.home-assistant.io/docs/blueprint/selectors/",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/input_selector.schema.json",
+  "type": "object",
+  "properties": {
+    "action": {
+      "description": "The action selector allows the user to input one or more sequences of actions",
+      "type": "null"
+    },
+    "addon": {
+      "description": "The add-on selector allows the user to input an add-on slug. Can only be used on an installation with a Supervisor",
+      "type": "null"
+    },
+    "area": {
+      "description": "The area selector allows the user to input an area name",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "device": {
+              "$ref": "#/$defs/device"
+            },
+            "entity": {
+              "$ref": "#/$defs/entity"
+            },
+            "multiple": {
+              "description": "Allows selecting multiple areas. If set to 'true', the resulting value of this selector will be a list instead of a single string value",
+              "type": "boolean",
+              "default": false
+            }
+          }
+        }
+      ]
+    },
+    "attribute": {
+      "description": "The attributes selector shows a list of state attribites from a provided entity of which one can be selected",
+      "type": "object",
+      "properties": {
+        "entity_id": {
+          "description": "The entity ID of which an state attribute can be selected from",
+          "type": "string"
+        }
+      },
+      "required": [
+        "entity_id"
+      ]
+    },
+    "boolean": {
+      "description": "The boolean selector shows a toggle that allows the user to turn on or off the selected option",
+      "type": "null"
+    },
+    "color_temp": {
+      "description": "The color temperature selector provides a select that allows for selecting a color temperature",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "min_mireds": {
+              "description": "The minimum color temperature in mireds",
+              "type": "integer",
+              "default": 153
+            },
+            "max_mireds": {
+              "description": "The maximum color temperature in mireds",
+              "type": "integer",
+              "default": 500
+            }
+          }
+        }
+      ]
+    },
+    "config_entry": {
+      "description": "The config entry selector allows the user to select an integration configuration entry",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "integration": {
+              "description": "Limits the list of selectable configuration entries to a single integration domain",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "date": {
+      "description": "The date selector shows a date input that allows the user to specify a date",
+      "type": "null"
+    },
+    "datetime": {
+      "description": "The date selector shows a date and time input that allows the user to specify a date with a specific time",
+      "type": "null"
+    },
+    "device": {
+      "description": "The device selector shows a device finder that can pick a single or multiple devices based on the selector configuration",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "integration": {
+              "description": "Can be set to an integration domain. Limits the list of devices to devices provided by the set integration domain",
+              "type": "string"
+            },
+            "manufacturer": {
+              "description": "When set, it limits the list of devices to devices provided by the set manufacturer name",
+              "type": "string"
+            },
+            "model": {
+              "description": "When set, it limits the list of devices to devices that have the set model",
+              "type": "string"
+            },
+            "entity": {
+              "$ref": "#/$defs/entity"
+            },
+            "multiple": {
+              "description": "Allows selecting multiple devices. If set to 'true', the resulting value of this selector will be a list instead of a single string value",
+              "type": "boolean",
+              "default": false
+            }
+          }
+        }
+      ]
+    },
+    "duration": {
+      "description": "The duration select allow the user to select a time duration",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "enable_days": {
+              "description": "When true, the duration selector will allow selecting days",
+              "type": "boolean",
+              "default": false
+            }
+          }
+        }
+      ]
+    },
+    "entity": {
+      "description": "The entity selector shows an entity finder that can pick a single entity or a list of entities based on the selector configuration",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "exclude_entities": {
+              "description": "List of entity IDs to exclude from the selectable list",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "include_entities": {
+              "description": "List of entity IDs to limit the selectable list to",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "integration": {
+              "description": "Can be set to an integration domain. Limits the list of entities to entities provided by the set integration domain, for example, 'zha'",
+              "type": "string"
+            },
+            "domain": {
+              "type": "string"
+            },
+            "device_class": {
+              "$ref": "#/$defs/device_class"
+            },
+            "multiple": {
+              "description": "Allows selecting multiple entities. If set to 'true', the resulting value of this selector will be a list instead of a single string value",
+              "type": "boolean",
+              "default": false
+            }
+          }
+        }
+      ]
+    },
+    "icon": {
+      "description": "The icon selector shows an icon picker that allows the user to select an icon",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "placeholder": {
+              "description": "Placeholder icon to show, when no icon is selected",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "location": {
+      "description": "The location selector allow a user to pick a location from a map and returns the matching longitude and latitude coordinators",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "icon": {
+              "description": "An optional icon to show on the map",
+              "type": "string"
+            },
+            "radius": {
+              "description": "Allow selecting the radius of the location. If enabled, the radius will be returned in meters",
+              "type": "boolean",
+              "default": false
+            }
+          }
+        }
+      ]
+    },
+    "media": {
+      "description": "The media selector is a powerful selector that allows a user to easily select media to play on a media device",
+      "type": "null"
+    },
+    "number": {
+      "description": "The number selector shows either a number input or a slider input, that allows the user to specify a numeric value",
+      "type": "object",
+      "properties": {
+        "min": {
+          "description": "The minimum user-settable number value",
+          "type": "number"
+        },
+        "max": {
+          "description": "The maximum user-settable number value",
+          "type": "number"
+        },
+        "step": {
+          "description": "The step value of the number value",
+          "type": "number",
+          "default": 1
+        },
+        "unit_of_measurement": {
+          "description": "Unit of measurement in which the number value is expressed in",
+          "type": "string"
+        },
+        "mode": {
+          "description": "This can be either 'box' or 'slider' mode",
+          "enum": [
+            "box",
+            "slider"
+          ],
+          "default": "slider"
+        }
+      },
+      "required": [
+        "min",
+        "max"
+      ]
+    },
+    "object": {
+      "description": "The object selector can be used to input arbitrary data in YAML form",
+      "type": "null"
+    },
+    "color_rgb": {
+      "description": "The RGB color selector allows the user to select an color from a color picker from the user interface, and returns the RGB color value",
+      "type": "null"
+    },
+    "select": {
+      "description": "The select selector shows a list of available options from which the user can choose",
+      "type": "object",
+      "properties": {
+        "options": {
+          "description": "List of options that the user can choose from. Small lists (5 items or less), are displayed as radio buttons. When more items are added, a dropdown list is used",
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "description": "The description to show in the UI for this item",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "The value to return when this label is selected",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "label",
+                  "value"
+                ]
+              }
+            }
+          ]
+        },
+        "multiple": {
+          "description": "Allows selecting multiple options. If set to 'true', the resulting value of this selector will be a list instead of a single string value",
+          "type": "boolean",
+          "default": true
+        },
+        "custom_value": {
+          "description": "Allows the user to enter and select a custom value (or multiple custom values in addition to the listed options if 'multiple' is set to 'true')",
+          "type": "boolean",
+          "default": false
+        },
+        "mode": {
+          "description": "This can be either 'list' (radio buttons) or 'dropdown' (combobox) mode. When not specified, small lists (5 items or less), are displayed as radio buttons. When more items are added, a dropdown list is used. If 'custom_value' is 'true', this setting will be ignored and the frontend will use a 'dropdown' input",
+          "enum": [
+            "list",
+            "dropdown"
+          ]
+        }
+      },
+      "required": [
+        "options"
+      ]
+    },
+    "state": {
+      "description": "The state selector shows a list of states for a provided entity of which one can be selected",
+      "type": "object",
+      "properties": {
+        "entity_id": {
+          "description": "The entity ID of which an state can be selected from",
+          "type": "string"
+        }
+      },
+      "required": [
+        "entity_id"
+      ]
+    },
+    "target": {
+      "description": "The target selector is a rather special selector, allowing the user to select targeted entities, devices or areas for service calls",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "device": {
+              "$ref": "#/$defs/device"
+            },
+            "entity": {
+              "$ref": "#/$defs/entity"
+            }
+          }
+        }
+      ]
+    },
+    "template": {
+      "description": "The template selector can be used to input a Jinja2 template",
+      "type": "string"
+    },
+    "text": {
+      "description": "The text selector can be used to input a text string",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "multiline": {
+              "description": "Set to true to display the input as a multi-line text box on the user interface",
+              "type": "boolean",
+              "default": false
+            },
+            "suffix": {
+              "description": "An optional suffix to show after the text input box",
+              "type": "string"
+            },
+            "type": {
+              "description": "The type of input. This is a browser hint, which can improve the client-side validation of the input. The value isn't validated by the backend. Possible types are: 'color', 'date', 'datetime-local', 'email', 'month', 'number', 'password', 'search', 'tel', 'text', 'time', 'url', 'week'",
+              "enum": [
+                "color",
+                "date",
+                "datetime-local",
+                "email",
+                "month",
+                "number",
+                "password",
+                "search",
+                "tel",
+                "text",
+                "time",
+                "url",
+                "week"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "theme": {
+      "description": "The theme selector allows for selecting a theme from the available themes installed in Home Assistant",
+      "type": "null"
+    },
+    "time": {
+      "description": "The time selector shows a time input that allows the user to specify a time of the day",
+      "type": "null"
+    }
+  },
+  "additionalProperties": false,
+  "maxProperties": 1,
+  "$defs": {
+    "device": {
+      "description": "When device options are provided, the list of areas is filtered by areas that at least provide one device that matches the given conditions",
+      "type": "object",
+      "properties": {
+        "integration": {
+          "description": "Can be set to an integration domain. Limits the list of areas that provide devices by the set integration domain, for example, 'zha'",
+          "type": "string"
+        },
+        "manufacturer": {
+          "description": "When set, it limits the list of areas that provide devices by the set manufacturer name",
+          "type": "string"
+        },
+        "model": {
+          "description": "When set, it limits the list of areas that provide devices that have the set model",
+          "type": "string"
+        }
+      }
+    },
+    "entity": {
+      "description": "When entity options are provided, the list of areas is filtered by areas that at least provide one entity that matches the given conditions",
+      "type": "object",
+      "properties": {
+        "integration": {
+          "description": "Can be set to an integration domain. Limits the list of areas that provide entities by the set integration domain, for example, 'zha'",
+          "type": "string"
+        },
+        "domain": {
+          "$ref": "#/$defs/domain_list"
+        },
+        "device_class": {
+          "$ref": "#/$defs/device_class"
+        }
+      }
+    },
+    "device_class": {
+      "description": "Limits the list of devices to devices that have entities with a certain device class, for example, 'motion' or 'window'\nhttps://www.home-assistant.io/docs/configuration/customizing-devices/#device-class",
+      "enum": [
+        "binary_sensor",
+        "cover",
+        "media_player",
+        "sensor",
+        "switch"
+      ]
+    },
+    "domain_list": {
+      "description": "Limits the list of entities to entities of a certain domain(s), for example, 'light' or 'binary_sensor'. Can be either a string with a single domain, or a list of string domains to limit the selection to",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    }
+  }
+}

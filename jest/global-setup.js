@@ -1,7 +1,7 @@
 import fs from 'fs';
 import Ajv from 'ajv';
-import chalk from 'chalk';
 import yaml from 'js-yaml';
+import path from 'path';
 
 // @ts-ignore
 export default function (globalConfig, projectConfig) {
@@ -13,17 +13,18 @@ export default function (globalConfig, projectConfig) {
     })
   ]);
 
+  const schemas = fs
+    .readdirSync('schemas', { withFileTypes: true })
+    .filter((dirent) => dirent.isFile())
+    .map((dirent) => [path.basename(dirent.name).split('.')[0], path.join('schemas', dirent.name)]);
+
   // Add schemas to ajv
-  for (const [id, path] of Object.entries({
-    automation_blueprint: 'schemas/automation_blueprint.schema.json',
-    blueprint_metadata: 'schemas/blueprint_metadata.schema.json',
-    common: 'schemas/common.schema.json'
-  })) {
+  for (const [id, filePath] of schemas) {
     try {
-      const schema = JSON.parse(fs.readFileSync(path, 'utf8'));
+      const schema = JSON.parse(fs.readFileSync(filePath, 'utf8'));
       ajv.addSchema(schema, id);
     } catch (e) {
-      console.error(chalk.red(`\nFailed to add schema ${path}: ${e}`));
+      console.error(`\nFailed to add schema ${path}: ${e}`);
       process.exit(1);
     }
   }

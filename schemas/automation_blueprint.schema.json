@@ -5,9 +5,7 @@
   "type": "object",
   "properties": {
     "blueprint": {
-      "description": "Blueprint metadata",
-      "$ref": "./blueprint_metadata.schema.json",
-      "$comment": "https://www.home-assistant.io/docs/blueprint/schema/"
+      "$ref": "./blueprint_metadata.schema.json"
     },
     "alias": {
       "description": "Friendly name for the automation.",

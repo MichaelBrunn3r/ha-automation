@@ -6,16 +6,13 @@ specifiers:
   '@types/js-yaml': ^4.0.5
   '@types/node': ^18.7.23
   ajv: ^8.11.0
-  chalk: ^5.0.1
   expect: ^29.1.2
   jest: ^29.1.2
+  jest-matcher-utils: ^29.1.2
   js-yaml: ^4.1.0
   ts-jest: ^29.0.3
   ts-node: ^10.9.1
   typescript: ^4.8.4
-
-dependencies:
-  chalk: 5.0.1
 
 devDependencies:
   '@jest/globals': 29.1.2
@@ -25,6 +22,7 @@ devDependencies:
   ajv: 8.11.0
   expect: 29.1.2
   jest: 29.1.2_sqkfeep4fedqlsauso44ecfrx4
+  jest-matcher-utils: 29.1.2
   js-yaml: 4.1.0
   ts-jest: 29.0.3_2gcdg7c5hzdfd67o3khlosdlhu
   ts-node: 10.9.1_gbhfbbeqrol7fxixnzbkbuanxe
@@ -995,11 +993,6 @@ packages:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
     dev: true
-
-  /chalk/5.0.1:
-    resolution: {integrity: sha512-Fo07WOYGqMfCWHOzSXOt2CxDbC6skS/jO9ynEcmpANMoPrD+W1r1K6Vx7iNm+AQmETU1Xr2t+n8nzkV9t6xh3w==}
-    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
-    dev: false
 
   /char-regex/1.0.2:
     resolution: {integrity: sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==}
