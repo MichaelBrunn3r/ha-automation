@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "The selector to use for this input field. A selector defines how the input is displayed in the frontend UI\nhttps://www.home-assistant.io/docs/blueprint/selectors/",
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/input_selectors.schema.json",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/input_selector.schema.json",
   "type": "object",
   "properties": {
     "action": {

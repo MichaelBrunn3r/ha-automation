@@ -5,7 +5,7 @@
   "type": "object",
   "properties": {
     "blueprint": {
-      "$ref": "./blueprint_metadata.schema.json"
+      "$ref": "blueprint_metadata.schema.json"
     },
     "alias": {
       "description": "Friendly name for the automation.",
@@ -103,14 +103,14 @@
       "oneOf": [
         {
           "description": "A condition template that has to be 'true' to start the automation.",
-          "$ref": "defs.schema.json#/$defs/template-string"
+          "$ref": "defs.schema.json#/$defs/template_string"
         },
         {
           "description": "Conditions that have to be 'true' to start the automation. By default all conditions listed have to be 'true', you can use logical conditions to change this default behavior.",
           "type": "array",
           "items": {
             "description": "A condition that has to be 'true' to start the automation.",
-            "$ref": "#/$defs/logical-condition"
+            "$ref": "condition.schema.json"
           }
         }
       ]
@@ -123,22 +123,6 @@
         "type": "object"
       }
     }
-  },
-  "$defs": {
-    "logical-condition": {
-      "type": "object",
-      "properties": {
-        "alias": {
-          "description": "A friendly name for the condition.",
-          "type": "string"
-        },
-        "condition": {
-          "description": "The condition to check.",
-          "type": "string"
-        }
-      }
-    },
-    "numeric-state-condition": {}
   },
   "required": [
     "blueprint",
