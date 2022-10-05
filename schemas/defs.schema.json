@@ -1,5 +1,5 @@
 {
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/common.schema.json",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/defs.schema.json",
   "$defs": {
     "template-string": {
       "description": "A template string.",
