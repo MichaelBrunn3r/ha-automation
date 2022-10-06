@@ -2,23 +2,110 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/defs.schema.json",
   "$defs": {
-    "template_string": {
+    "template": {
       "description": "A template string.",
       "type": "string",
       "pattern": ".*(\\{\\{.*\\}\\}).*",
       "$comment": "https://www.home-assistant.io/docs/configuration/templating/#important-template-rules"
     },
+    "object_or_template": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/template"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "string_or_template": {
+      "type": "string"
+    },
+    "str_or_str_list": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
     "helper_entity": {
       "type": "string",
       "pattern": "^input_.+"
     },
-    "time_offset": {
+    "time_str": {
+      "$comment": "HH:MM:SS",
+      "type": "string",
+      "pattern": "\\d\\d:\\d\\d:\\d\\d"
+    },
+    "time_offset_str": {
+      "$comment": "HH:MM:SS",
       "type": "string",
       "pattern": "-?\\d\\d:\\d\\d:\\d\\d"
     },
-    "time": {
-      "type": "string",
-      "pattern": "\\d\\d:\\d\\d:\\d\\d"
+    "time_period": {
+      "type": "object",
+      "properties": {
+        "hours": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "minutes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 59
+        },
+        "seconds": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 59
+        }
+      }
+    },
+    "templateable_time_period": {
+      "type": "object",
+      "properties": {
+        "hours": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "$ref": "#/$defs/template"
+            }
+          ]
+        },
+        "minutes": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 59
+            },
+            {
+              "$ref": "#/$defs/template"
+            }
+          ]
+        },
+        "seconds": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 59
+            },
+            {
+              "$ref": "#/$defs/template"
+            }
+          ]
+        }
+      }
     },
     "zone_id": {
       "type": "string",

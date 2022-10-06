@@ -1,0 +1,537 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger.schema.json",
+  "oneOf": [
+    {
+      "title": "Event trigger",
+      "description": "Fires when an event is being received",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "const": "event"
+        },
+        "event_type": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/event_type"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/event_type"
+              },
+              "uniqueItems": true
+            }
+          ]
+        },
+        "event_data": {
+          "$ref": "defs.schema.json#/$defs/object_or_template"
+        },
+        "context": {
+          "$ref": "defs.schema.json#/$defs/object_or_template"
+        },
+        "id": {
+          "type": "string"
+        },
+        "enable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "platform",
+        "event_type"
+      ]
+    },
+    {
+      "title": "Home Assistant trigger",
+      "description": "Fires when Home Assistant starts up or shuts down",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "const": "homeassistant"
+        },
+        "event": {
+          "enum": [
+            "start",
+            "shutdown"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "enable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "platform",
+        "event"
+      ]
+    },
+    {
+      "title": "MQTT trigger",
+      "description": "Fires when a specific message is received on given MQTT topic",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "const": "mqtt"
+        },
+        "topic": {
+          "$ref": "defs.schema.json#/$defs/string_or_template"
+        },
+        "payload": {
+          "$ref": "defs.schema.json#/$defs/string_or_template"
+        },
+        "encoding": {
+          "type": "string",
+          "examples": [
+            ""
+          ],
+          "default": "utf-8"
+        },
+        "value_template": {
+          "$ref": "defs.schema.json#/$defs/template"
+        },
+        "id": {
+          "type": "string"
+        },
+        "enable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "platform",
+        "topic"
+      ]
+    },
+    {
+      "title": "Numeric state trigger",
+      "description": "Fires when the numeric value of an entity's state (or attribute's value if using the 'attribute' property, or the calculated value if using the 'value_template' property) crosses (and only when crossing) a given threshold",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "const": "numeric_state"
+        },
+        "entity_id": {
+          "$ref": "defs.schema.json#/$defs/str_or_str_list"
+        },
+        "attribute": {
+          "type": "string"
+        },
+        "value_template": {
+          "$ref": "defs.schema.json#/$defs/template"
+        },
+        "below": {
+          "type": "number"
+        },
+        "above": {
+          "type": "number"
+        },
+        "for": {
+          "oneOf": [
+            {
+              "$ref": "defs.schema.json#/$defs/time_str"
+            },
+            {
+              "$ref": "defs.schema.json#/$defs/templateable_time_period"
+            }
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "enable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "platform",
+        "entity_id"
+      ]
+    },
+    {
+      "title": "State trigger",
+      "description": "Fires when the state of any of given entities changes",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "const": "state"
+        },
+        "entity_id": {
+          "$ref": "defs.schema.json#/$defs/str_or_str_list"
+        },
+        "from": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "not_from": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "to": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "not_to": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "for": {
+          "oneOf": [
+            {
+              "$ref": "defs.schema.json#/$defs/time_str"
+            },
+            {
+              "$ref": "defs.schema.json#/$defs/templateable_time_period"
+            }
+          ]
+        },
+        "attribute": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "enable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "platform",
+        "entity_id"
+      ]
+    },
+    {
+      "title": "Sun trigger",
+      "description": "Fires when the sun is setting or rising, i.e., when the sun elevation reaches 0°",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "const": "sun"
+        },
+        "event": {
+          "enum": [
+            "sunset",
+            "sunrise"
+          ]
+        },
+        "offset": {
+          "$ref": "defs.schema.json#/$defs/time_offset_str"
+        },
+        "id": {
+          "type": "string"
+        },
+        "enable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "platform",
+        "event"
+      ]
+    },
+    {
+      "title": "Tag trigger",
+      "description": "Fires when a tag is scanned",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "const": "tag"
+        },
+        "tag_id": {
+          "$ref": "defs.schema.json#/$defs/str_or_str_list"
+        },
+        "device_id": {
+          "$ref": "defs.schema.json#/$defs/str_or_str_list"
+        },
+        "id": {
+          "type": "string"
+        },
+        "enable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "platform",
+        "tag_id"
+      ]
+    },
+    {
+      "title": "Template trigger",
+      "description": "Template triggers work by evaluating a template when any of the recognized entities change state",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "const": "template"
+        },
+        "value_template": {
+          "$ref": "defs.schema.json#/$defs/template"
+        },
+        "for": {
+          "oneOf": [
+            {
+              "$ref": "defs.schema.json#/$defs/time_str"
+            },
+            {
+              "$ref": "defs.schema.json#/$defs/templateable_time_period"
+            }
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "enable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "platform",
+        "value_template"
+      ]
+    },
+    {
+      "title": "Time trigger",
+      "description": "The time trigger is configured to fire once a day at a specific time, or at a specific time on a specific date",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "const": "time"
+        },
+        "at": {
+          "$ref": "defs.schema.json#/$defs/str_or_str_list"
+        },
+        "id": {
+          "type": "string"
+        },
+        "enable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "platform",
+        "at"
+      ]
+    },
+    {
+      "title": "Time pattern trigger",
+      "description": "With the time pattern trigger, you can match if the hour, minute or second of the current time matches a specific value",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "const": "time_pattern"
+        },
+        "hours": {
+          "type": "string",
+          "pattern": "^(\\*|\/?([0-9]|1[0-9]|2[0-3]))$"
+        },
+        "minutes": {
+          "type": "string",
+          "pattern": "^(\\*|\/?([0-9]|[1-5][0-9]))$"
+        },
+        "seconds": {
+          "type": "string",
+          "pattern": "^(\\*|\/?([0-9]|[1-5][0-9]))$"
+        },
+        "id": {
+          "type": "string"
+        },
+        "enable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "platform"
+      ]
+    },
+    {
+      "title": "Webhook trigger",
+      "description": "Webhook trigger fires when a web request is made to the webhook endpoint: /api/webhook/<webhook_id>",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "const": "webhook"
+        },
+        "webhook_id": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "enable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "platform",
+        "webhook_id"
+      ]
+    },
+    {
+      "title": "Zone trigger",
+      "description": "Zone trigger fires when an entity is entering or leaving the zone",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "const": "zone"
+        },
+        "entity_id": {
+          "$ref": "defs.schema.json#/$defs/str_or_str_list"
+        },
+        "zone": {
+          "type": "string"
+        },
+        "event": {
+          "enum": [
+            "enter",
+            "leave"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "enable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "platform",
+        "entity_id",
+        "zone",
+        "event"
+      ]
+    },
+    {
+      "title": "Geolocation trigger",
+      "description": "Geolocation trigger fires when an entity is appearing in or disappearing from a zone",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "const": "geo_location"
+        },
+        "entity_id": {
+          "$ref": "defs.schema.json#/$defs/str_or_str_list"
+        },
+        "zone": {
+          "type": "string"
+        },
+        "event": {
+          "enum": [
+            "enter",
+            "leave"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "enable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "platform",
+        "entity_id",
+        "zone",
+        "event"
+      ]
+    },
+    {
+      "title": "Calendar trigger",
+      "description": "Calendar trigger fires when a Calendar event starts or ends, allowing much more flexible automations that using the Calendar entity state which only supports a single event start at a time",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "const": "calendar"
+        },
+        "event": {
+          "enum": [
+            "start",
+            "end"
+          ]
+        },
+        "entity_id": {
+          "$ref": "defs.schema.json#/$defs/str_or_str_list"
+        },
+        "offset": {
+          "$ref": "defs.schema.json#/$defs/time_offset_str"
+        },
+        "id": {
+          "type": "string"
+        },
+        "enable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "platform",
+        "event",
+        "entity_id"
+      ]
+    }
+  ],
+  "$defs": {
+    "event_type": {
+      "type": "string",
+      "examples": [
+        "call_service",
+        "component_loaded",
+        "core_config_updated",
+        "data_entry_flow_progressed",
+        "homeassistant_start",
+        "homeassistant_started",
+        "homeassistant_stop",
+        "homeassistant_final_write",
+        "homeassistant_close",
+        "logbook_entry",
+        "service_registered",
+        "service_removed",
+        "state_changed",
+        "themes_updated",
+        "user_added",
+        "user_removed",
+        "automation_reloaded",
+        "automation_triggered",
+        "scene_reloaded",
+        "script_started"
+      ]
+    }
+  }
+}

@@ -205,7 +205,7 @@
           ]
         },
         "value_template": {
-          "$ref": "defs.schema.json#/$defs/template_string"
+          "$ref": "defs.schema.json#/$defs/template"
         },
         "attribute": {
           "type": "string"
@@ -266,18 +266,7 @@
           "const": "any"
         },
         "for": {
-          "type": "object",
-          "properties": {
-            "hours": {
-              "type": "integer"
-            },
-            "minutes": {
-              "type": "integer"
-            },
-            "seconds": {
-              "type": "integer"
-            }
-          }
+          "$ref": "defs.schema.json#/$defs/time_period"
         },
         "enabled": {
           "type": "boolean"
@@ -322,10 +311,10 @@
           ]
         },
         "after_offset": {
-          "$ref": "defs.schema.json#/$defs/time_offset"
+          "$ref": "defs.schema.json#/$defs/time_offset_str"
         },
         "before_offset": {
-          "$ref": "defs.schema.json#/$defs/time_offset"
+          "$ref": "defs.schema.json#/$defs/time_offset_str"
         },
         "enabled": {
           "type": "boolean"
@@ -340,7 +329,7 @@
       "description": "The template condition tests if the given template renders a value equal to true",
       "oneOf": [
         {
-          "$ref": "defs.schema.json#/$defs/template_string"
+          "$ref": "defs.schema.json#/$defs/template"
         },
         {
           "type": "object",
@@ -352,7 +341,7 @@
               "const": "template"
             },
             "value_template": {
-              "$ref": "defs.schema.json#/$defs/template_string"
+              "$ref": "defs.schema.json#/$defs/template"
             },
             "enabled": {
               "type": "boolean"
@@ -379,7 +368,7 @@
         "after": {
           "oneOf": [
             {
-              "$ref": "defs.schema.json#/$defs/time"
+              "$ref": "defs.schema.json#/$defs/time_str"
             },
             {
               "type": "string",
@@ -390,7 +379,7 @@
         "before": {
           "oneOf": [
             {
-              "$ref": "defs.schema.json#/$defs/time"
+              "$ref": "defs.schema.json#/$defs/time_str"
             },
             {
               "type": "string",

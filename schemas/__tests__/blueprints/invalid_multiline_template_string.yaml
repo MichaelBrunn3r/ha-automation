@@ -2,7 +2,8 @@ blueprint:
   name: "A blueprint"
   domain: "automation"
 trigger:
-  - d: "A trigger"
+  - platform: event
+    event_type: state_changed
 condition: >
   {% if is_state('device_tracker.paulus', 'home') %}
     Ha, Paulus is home!
