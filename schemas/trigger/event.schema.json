@@ -1,0 +1,69 @@
+{
+  "title": "Event trigger",
+  "description": "Fires when an event is being received",
+  "type": "object",
+  "properties": {
+    "platform": {
+      "const": "event"
+    },
+    "event_type": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/event_type"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/event_type"
+          },
+          "uniqueItems": true
+        }
+      ]
+    },
+    "event_data": {
+      "$ref": "../defs.schema.json#/$defs/object_or_template"
+    },
+    "context": {
+      "$ref": "../defs.schema.json#/$defs/object_or_template"
+    },
+    "id": {
+      "type": "string"
+    },
+    "enable": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "platform",
+    "event_type"
+  ],
+  "$defs": {
+    "event_type": {
+      "type": "string",
+      "examples": [
+        "call_service",
+        "component_loaded",
+        "core_config_updated",
+        "data_entry_flow_progressed",
+        "homeassistant_start",
+        "homeassistant_started",
+        "homeassistant_stop",
+        "homeassistant_final_write",
+        "homeassistant_close",
+        "logbook_entry",
+        "service_registered",
+        "service_removed",
+        "state_changed",
+        "themes_updated",
+        "user_added",
+        "user_removed",
+        "automation_reloaded",
+        "automation_triggered",
+        "scene_reloaded",
+        "script_started"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/event.schema.json"
+}

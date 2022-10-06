@@ -1,0 +1,25 @@
+{
+  "title": "Webhook trigger",
+  "description": "Webhook trigger fires when a web request is made to the webhook endpoint: /api/webhook/<webhook_id>",
+  "type": "object",
+  "properties": {
+    "platform": {
+      "const": "webhook"
+    },
+    "webhook_id": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "enable": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "platform",
+    "webhook_id"
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/webhook.schema.json"
+}

@@ -1,0 +1,28 @@
+{
+  "title": "Tag trigger",
+  "description": "Fires when a tag is scanned",
+  "type": "object",
+  "properties": {
+    "platform": {
+      "const": "tag"
+    },
+    "tag_id": {
+      "$ref": "../defs.schema.json#/$defs/str_or_str_list"
+    },
+    "device_id": {
+      "$ref": "../defs.schema.json#/$defs/str_or_str_list"
+    },
+    "id": {
+      "type": "string"
+    },
+    "enable": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "platform",
+    "tag_id"
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/tag.schema.json"
+}

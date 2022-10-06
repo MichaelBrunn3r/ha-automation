@@ -13,10 +13,20 @@ export default function (globalConfig, projectConfig) {
     })
   ]);
 
-  const schemas = fs
+  let schemas = fs
     .readdirSync('schemas', { withFileTypes: true })
     .filter((dirent) => dirent.isFile())
     .map((dirent) => [path.basename(dirent.name).split('.')[0], path.join('schemas', dirent.name)]);
+
+  schemas = schemas.concat(
+    fs
+      .readdirSync('schemas/trigger', { withFileTypes: true })
+      .filter((dirent) => dirent.isFile())
+      .map((dirent) => [
+        path.join('trigger', path.basename(dirent.name).split('.')[0]),
+        path.join('schemas', 'trigger', dirent.name)
+      ])
+  );
 
   // Add schemas to ajv
   for (const [id, filePath] of schemas) {
