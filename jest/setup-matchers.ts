@@ -116,7 +116,7 @@ function toBeValidBlueprint(actual: boolean) {
       message += `  ${line}\n`;
     });
 
-    message = `${matcherHint('.toMatchSchema', undefined, 'schema')}\n\n${message}`;
+    message = `${matcherHint(`.${toBeValidBlueprint.name}`, undefined, 'schema')}\n\n${message}`;
   }
 
   return {
