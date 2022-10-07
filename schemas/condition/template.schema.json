@@ -1,0 +1,32 @@
+{
+  "title": "Template Condition",
+  "description": "The template condition tests if the given template renders a value equal to true",
+  "oneOf": [
+    {
+      "$ref": "../defs.schema.json#/$defs/template"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "alias": {
+          "type": "string"
+        },
+        "condition": {
+          "const": "template"
+        },
+        "value_template": {
+          "$ref": "../defs.schema.json#/$defs/template"
+        },
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "condition",
+        "value_template"
+      ]
+    }
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/condition/template.schema.json"
+}

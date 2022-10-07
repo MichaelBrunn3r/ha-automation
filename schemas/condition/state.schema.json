@@ -1,0 +1,61 @@
+{
+  "title": "State Condition",
+  "description": "Tests if an entity is a specified state",
+  "type": "object",
+  "properties": {
+    "alias": {
+      "type": "string"
+    },
+    "condition": {
+      "const": "state"
+    },
+    "entity_id": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "attribute": {
+      "type": "string"
+    },
+    "state": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "$ref": "../defs.schema.json#/$defs/helper_entity"
+        }
+      ]
+    },
+    "match": {
+      "const": "any"
+    },
+    "for": {
+      "$ref": "../defs.schema.json#/$defs/time_period"
+    },
+    "enabled": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "condition",
+    "entity_id",
+    "state"
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/condition/state.schema.json"
+}

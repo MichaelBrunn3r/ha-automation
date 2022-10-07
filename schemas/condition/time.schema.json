@@ -1,0 +1,57 @@
+{
+  "title": "Time Condition",
+  "description": "The time condition can test if it is after a specified time, before a specified time or if it is a certain day of the week",
+  "type": "object",
+  "properties": {
+    "alias": {
+      "type": "string"
+    },
+    "condition": {
+      "const": "time"
+    },
+    "after": {
+      "oneOf": [
+        {
+          "$ref": "../defs.schema.json#/$defs/time_str"
+        },
+        {
+          "type": "string",
+          "pattern": "^(input_datetime|sensor)\\..+"
+        }
+      ]
+    },
+    "before": {
+      "oneOf": [
+        {
+          "$ref": "../defs.schema.json#/$defs/time_str"
+        },
+        {
+          "type": "string",
+          "pattern": "^(input_datetime|sensor)\\..+"
+        }
+      ]
+    },
+    "weekday": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "mon",
+          "tue",
+          "wed",
+          "thu",
+          "fri",
+          "sat",
+          "sun"
+        ]
+      }
+    },
+    "enabled": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "condition"
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/condition/time.schema.json"
+}

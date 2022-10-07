@@ -1,0 +1,63 @@
+{
+  "title": "Numeric State Condition",
+  "description": "This type of condition attempts to parse the state of the specified entity or the attribute of an entity as a number, and triggers if the value matches the thresholds",
+  "type": "object",
+  "properties": {
+    "alias": {
+      "type": "string"
+    },
+    "condition": {
+      "const": "numeric_state"
+    },
+    "entity_id": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "above": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "pattern": "^(input_number|number|sensor)\\..+"
+        }
+      ]
+    },
+    "below": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "pattern": "^(input_number|number|sensor)\\..+"
+        }
+      ]
+    },
+    "value_template": {
+      "$ref": "../defs.schema.json#/$defs/template"
+    },
+    "attribute": {
+      "type": "string"
+    },
+    "enabled": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "condition",
+    "entity_id"
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/condition/numeric_state.schema.json"
+}

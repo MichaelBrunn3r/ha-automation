@@ -1,0 +1,52 @@
+{
+  "title": "NOT Condition",
+  "description": "Test multiple conditions in one condition statement. Passes if all embedded conditions are not valid",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "alias": {
+          "type": "string"
+        },
+        "condition": {
+          "const": "not"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "../condition.schema.json"
+          }
+        },
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "condition",
+        "conditions"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "alias": {
+          "type": "string"
+        },
+        "not": {
+          "type": "array",
+          "items": {
+            "$ref": "../condition.schema.json"
+          }
+        },
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "not"
+      ]
+    }
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/condition/not.schema.json"
+}

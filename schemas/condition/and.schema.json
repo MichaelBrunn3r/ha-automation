@@ -1,0 +1,58 @@
+{
+  "title": "AND Condition",
+  "description": "Test multiple conditions in one condition statement. Passes if all embedded conditions are valid",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "alias": {
+          "type": "string"
+        },
+        "condition": {
+          "const": "and"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "../condition.schema.json"
+          }
+        },
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "condition",
+        "conditions"
+      ]
+    },
+    {
+      "type": "array",
+      "items": {
+        "$ref": "../condition.schema.json"
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "alias": {
+          "type": "string"
+        },
+        "and": {
+          "type": "array",
+          "items": {
+            "$ref": "../condition.schema.json"
+          }
+        },
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "and"
+      ]
+    }
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/condition/and.schema.json"
+}

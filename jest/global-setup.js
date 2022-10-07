@@ -18,6 +18,7 @@ export default function (globalConfig, projectConfig) {
     .filter((dirent) => dirent.isFile())
     .map((dirent) => [path.basename(dirent.name).split('.')[0], path.join('schemas', dirent.name)]);
 
+  // Add trigger schemas
   schemas = schemas.concat(
     fs
       .readdirSync('schemas/trigger', { withFileTypes: true })
@@ -25,6 +26,17 @@ export default function (globalConfig, projectConfig) {
       .map((dirent) => [
         path.join('trigger', path.basename(dirent.name).split('.')[0]),
         path.join('schemas', 'trigger', dirent.name)
+      ])
+  );
+
+  // Add condition schemas
+  schemas = schemas.concat(
+    fs
+      .readdirSync('schemas/condition', { withFileTypes: true })
+      .filter((dirent) => dirent.isFile())
+      .map((dirent) => [
+        path.join('condition', path.basename(dirent.name).split('.')[0]),
+        path.join('schemas', 'condition', dirent.name)
       ])
   );
 
