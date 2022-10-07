@@ -10,7 +10,13 @@ function generateSchema(file: string) {
   dest = path.dirname(dest) + '/' + path.basename(dest, '.yaml') + '.json';
 
   // Load schema
-  let schema = yaml.load(fs.readFileSync(file, 'utf8')) as Record<string, any>;
+  let schema: Record<string, any>;
+  try {
+    schema = yaml.load(fs.readFileSync(file, 'utf8')) as Record<string, any>;
+  } catch (e) {
+    console.error(`Failed to load schema ${file}: ${e}`);
+    return;
+  }
 
   // Replace .yaml references with .json
   schema = mapEntriesRecursive((k, v) => k)((k, v) => (k === '$ref' ? (v as string).replace('.yaml', '.json') : v))(
