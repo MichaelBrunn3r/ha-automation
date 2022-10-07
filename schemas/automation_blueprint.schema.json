@@ -78,7 +78,8 @@
         "warn",
         "info",
         "debug",
-        "notset"
+        "notset",
+        "silent"
       ],
       "default": "warning"
     },
