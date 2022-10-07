@@ -3,8 +3,9 @@ import path from 'path';
 import glob from 'glob';
 import yaml from 'js-yaml';
 import { mapEntriesRecursive } from './utils';
+import chokidar from 'chokidar';
 
-glob.sync('scripts/schemas/**/*.schema.yaml').forEach((file) => {
+function generateSchema(file: string) {
   let dest = file.substring('scripts/'.length);
   dest = path.dirname(dest) + '/' + path.basename(dest, '.yaml') + '.json';
 
@@ -20,4 +21,24 @@ glob.sync('scripts/schemas/**/*.schema.yaml').forEach((file) => {
   schema['$id'] = `http://github.com/MichaelBrunn3r/ha-blueprints/schemas/${dest.substring('schemas/'.length)}`;
 
   fs.writeFileSync(dest, JSON.stringify(schema, null, 2) + '\n');
-});
+}
+
+function generateSchemas() {
+  glob.sync('scripts/schemas/**/*.schema.yaml').forEach((file) => generateSchema(file));
+}
+
+const args = process.argv.slice(2);
+const watch = args.includes('--watch');
+
+console.log('Generating schemas...');
+generateSchemas();
+
+if (watch) {
+  console.log('Watching for changes...');
+  chokidar.watch('scripts/schemas').on('change', (filename, stats) => {
+    if (filename.endsWith('.schema.yaml')) {
+      console.log(`${filename} changed...`);
+      generateSchema(filename);
+    }
+  });
+}

@@ -9,3 +9,5 @@
 9. [Jest config: globalSetup](https://jestjs.io/docs/configuration#globalsetup-string)
 10. [Going too far with Jest Custom Matchers in TypeScript](https://haspar.us/notes/adding-jest-custom-matchers-in-typescript/)
 11. [Upon error, does ajv also display the line number details ?](https://github.com/ajv-validator/ajv/issues/763)
+12. [How to parse command line arguments](https://nodejs.org/en/knowledge/command-line/how-to-parse-command-line-arguments/)
+13. [How to Watch for Files Changes in Node.js](https://thisdavej.com/how-to-watch-for-files-changes-in-node-js/)
