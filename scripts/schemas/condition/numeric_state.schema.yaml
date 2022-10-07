@@ -16,12 +16,12 @@ properties:
     oneOf:
       - type: number
       - type: string
-        pattern: "^(input_number|number|sensor)\\..+"
+        pattern: ^(input_number|number|sensor)\..+
   below:
     oneOf:
       - type: number
       - type: string
-        pattern: "^(input_number|number|sensor)\\..+"
+        pattern: ^(input_number|number|sensor)\..+
   value_template:
     $ref: "../defs.schema.yaml#/$defs/template"
   attribute:

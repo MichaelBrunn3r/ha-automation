@@ -11,3 +11,4 @@
 11. [Upon error, does ajv also display the line number details ?](https://github.com/ajv-validator/ajv/issues/763)
 12. [How to parse command line arguments](https://nodejs.org/en/knowledge/command-line/how-to-parse-command-line-arguments/)
 13. [How to Watch for Files Changes in Node.js](https://thisdavej.com/how-to-watch-for-files-changes-in-node-js/)
+14. [YAML anchors](https://support.atlassian.com/bitbucket-cloud/docs/yaml-anchors/)

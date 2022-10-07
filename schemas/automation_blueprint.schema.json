@@ -61,8 +61,7 @@
         "queued",
         "parallel"
       ],
-      "default": "single",
-      "$comment": "https://www.home-assistant.io/docs/automation/yaml/#mode"
+      "default": "single"
     },
     "max": {
       "description": "Controls maximum number of runs executing and/or queued up to run at a time. Only valid with modes 'queued' and 'parallel'.",

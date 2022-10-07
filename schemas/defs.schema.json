@@ -3,7 +3,7 @@
     "template": {
       "description": "A template string.",
       "type": "string",
-      "pattern": ".*(\\{\\{.*\\}\\}).*"
+      "pattern": ".*(\\{\\{.+\\}\\}).*"
     },
     "object_or_template": {
       "oneOf": [
@@ -36,12 +36,10 @@
       "pattern": "^input_.+"
     },
     "time_str": {
-      "$comment": "HH:MM:SS",
       "type": "string",
       "pattern": "\\d\\d:\\d\\d:\\d\\d"
     },
     "time_offset_str": {
-      "$comment": "HH:MM:SS",
       "type": "string",
       "pattern": "-?\\d\\d:\\d\\d:\\d\\d"
     },

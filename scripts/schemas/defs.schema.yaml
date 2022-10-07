@@ -2,8 +2,7 @@ $defs:
   template:
     description: A template string.
     type: string
-    pattern: ".*(\\{\\{.*\\}\\}).*"
-    # comment: "https://www.home-assistant.io/docs/configuration/templating/#important-template-rules"
+    pattern: .*(\{\{.+\}\}).* # Must contain at least one {{ }}
   object_or_template:
     oneOf:
       - $ref: "#/$defs/template"
@@ -20,13 +19,11 @@ $defs:
     type: string
     pattern: ^input_.+
   time_str:
-    $comment: "HH:MM:SS"
     type: string
-    pattern: "\\d\\d:\\d\\d:\\d\\d"
+    pattern: \d\d:\d\d:\d\d # Time format "HH:MM:SS"
   time_offset_str:
-    $comment: "HH:MM:SS"
     type: string
-    pattern: "-?\\d\\d:\\d\\d:\\d\\d"
+    pattern: -?\d\d:\d\d:\d\d # Signed time format "HH:MM:SS"
   time_period:
     type: object
     properties:
@@ -63,4 +60,4 @@ $defs:
           - $ref: "#/$defs/template"
   zone_id:
     type: string
-    pattern: "^zone\\..+"
+    pattern: ^zone\..+

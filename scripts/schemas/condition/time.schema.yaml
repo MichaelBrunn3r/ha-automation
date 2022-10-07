@@ -10,12 +10,12 @@ properties:
     oneOf:
       - $ref: "../defs.schema.yaml#/$defs/time_str"
       - type: string
-        pattern: "^(input_datetime|sensor)\\..+"
+        pattern: ^(input_datetime|sensor)\..+
   before:
     oneOf:
       - $ref: "../defs.schema.yaml#/$defs/time_str"
       - type: string
-        pattern: "^(input_datetime|sensor)\\..+"
+        pattern: ^(input_datetime|sensor)\..+
   weekday:
     type: array
     items:
