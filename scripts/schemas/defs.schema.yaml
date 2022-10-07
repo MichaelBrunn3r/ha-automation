@@ -53,6 +53,6 @@ $defs:
             minimum: 0
             maximum: 59
           - $ref: "#/$defs/template"
-  zone_id:
+  zone:
     type: string
     pattern: ^zone\..+

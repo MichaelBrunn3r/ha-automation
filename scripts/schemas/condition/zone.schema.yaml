@@ -13,11 +13,11 @@ properties:
         items:
           type: string
   zone:
-    $ref: "../defs.schema.yaml#/$defs/zone_id"
+    $ref: "../defs.schema.yaml#/$defs/zone"
   state:
     type: array
     items:
-      $ref: "../defs.schema.yaml#/$defs/zone_id"
+      $ref: "../defs.schema.yaml#/$defs/zone"
   enabled:
     type: boolean
 required:

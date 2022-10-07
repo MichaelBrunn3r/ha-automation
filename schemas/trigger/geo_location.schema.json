@@ -10,7 +10,7 @@
       "$ref": "../defs.schema.json#/$defs/str|str[]"
     },
     "zone": {
-      "type": "string"
+      "$ref": "../defs.schema.json#/$defs/zone"
     },
     "event": {
       "enum": [

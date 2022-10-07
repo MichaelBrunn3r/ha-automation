@@ -95,7 +95,7 @@
         }
       }
     },
-    "zone_id": {
+    "zone": {
       "type": "string",
       "pattern": "^zone\\..+"
     }

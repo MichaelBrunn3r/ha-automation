@@ -23,12 +23,12 @@
       ]
     },
     "zone": {
-      "$ref": "../defs.schema.json#/$defs/zone_id"
+      "$ref": "../defs.schema.json#/$defs/zone"
     },
     "state": {
       "type": "array",
       "items": {
-        "$ref": "../defs.schema.json#/$defs/zone_id"
+        "$ref": "../defs.schema.json#/$defs/zone"
       }
     },
     "enabled": {

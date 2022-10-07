@@ -7,7 +7,7 @@ properties:
   entity_id:
     $ref: "../defs.schema.yaml#/$defs/str|str[]"
   zone:
-    type: string
+    $ref: "../defs.schema.yaml#/$defs/zone"
   event:
     enum:
       - enter
