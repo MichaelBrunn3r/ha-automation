@@ -7,7 +7,7 @@
       "const": "sun"
     },
     "entity_id": {
-      "type": "string"
+      "$ref": "../defs.schema.json#/$defs/entity_id"
     },
     "state": {
       "enum": [

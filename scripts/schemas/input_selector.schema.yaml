@@ -1,8 +1,5 @@
-description: >-
-  The selector to use for this input field. A selector defines how the input is
-  displayed in the frontend UI
-
-  https://www.home-assistant.io/docs/blueprint/selectors/
+# See https://www.home-assistant.io/docs/blueprint/selectors/
+description: The selector to use for this input field. A selector defines how the input is displayed in the frontend UI
 type: object
 properties:
   action:
@@ -31,7 +28,7 @@ properties:
     properties:
       entity_id:
         description: The entity ID of which an state attribute can be selected from
-        type: string
+        $ref: "../defs.schema.yaml#/$defs/entity_id"
     required:
       - entity_id
   boolean:
@@ -225,7 +222,7 @@ properties:
     properties:
       entity_id:
         description: The entity ID of which an state can be selected from
-        type: string
+        $ref: "../defs.schema.yaml#/$defs/entity_id"
     required:
       - entity_id
   target:
@@ -304,12 +301,8 @@ $defs:
       device_class:
         $ref: "#/$defs/device_class"
   device_class:
-    description: >-
-      Limits the list of devices to devices that have entities with
-      a certain device class, for example, 'motion' or 'window'
-
-      https://www.home-assistant.io/docs/configuration/customizing-devices/#device-class
-    enum:
+    description: "Limits the list of devices to devices that have entities with a certain device class, for example, 'motion' or 'window'"
+    enum: # See https://www.home-assistant.io/docs/configuration/customizing-devices/#device-class
       - binary_sensor
       - cover
       - media_player

@@ -7,17 +7,7 @@
       "const": "state"
     },
     "entity_id": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      ]
+      "$ref": "../defs.schema.json#/$defs/entity_id|entity_id[]"
     },
     "attribute": {
       "type": "string"

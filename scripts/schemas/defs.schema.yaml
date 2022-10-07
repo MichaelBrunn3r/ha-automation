@@ -56,3 +56,50 @@ $defs:
   zone:
     type: string
     pattern: ^zone\..+
+  entity_id:
+    type: string
+    pattern: ^.+\..+$
+    examples: # https://www.home-assistant.io/integrations/default_config/
+      - automation.
+      - backup.
+      - bluetooth.
+      - config.
+      - counter.
+      - dhcp.
+      - energy.
+      - frontend.
+      - hardware.
+      - history.
+      - homeassistant_alerts.
+      - cloud.
+      - image.
+      - input_boolean.
+      - input_datetime.
+      - input_number.
+      - input_select.
+      - input_text.
+      - logbook.
+      - map.
+      - media_source.
+      - mobile_app.
+      - my.
+      - person.
+      - schedule.
+      - scene.
+      - script.
+      - ssdp.
+      - stream.
+      - sun.
+      - system_health.
+      - tag.
+      - timer.
+      - usb.
+      - webhook.
+      - zeroconf.
+      - zone.
+  entity_id|entity_id[]:
+    oneOf:
+      - $ref: "#/$defs/entity_id"
+      - type: array
+        items:
+          $ref: "#/$defs/entity_id"

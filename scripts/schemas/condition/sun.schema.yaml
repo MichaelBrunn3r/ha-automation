@@ -5,7 +5,7 @@ properties:
   condition:
     const: sun
   entity_id:
-    type: string
+    $ref: "../defs.schema.yaml#/$defs/entity_id"
   state:
     enum:
       - above_horizon

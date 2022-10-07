@@ -7,7 +7,7 @@
       "const": "geo_location"
     },
     "entity_id": {
-      "$ref": "../defs.schema.json#/$defs/str|str[]"
+      "$ref": "../defs.schema.json#/$defs/entity_id|entity_id[]"
     },
     "zone": {
       "$ref": "../defs.schema.json#/$defs/zone"

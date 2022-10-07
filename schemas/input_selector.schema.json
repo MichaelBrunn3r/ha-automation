@@ -1,5 +1,5 @@
 {
-  "description": "The selector to use for this input field. A selector defines how the input is displayed in the frontend UI\nhttps://www.home-assistant.io/docs/blueprint/selectors/",
+  "description": "The selector to use for this input field. A selector defines how the input is displayed in the frontend UI",
   "type": "object",
   "properties": {
     "action": {
@@ -40,7 +40,7 @@
       "properties": {
         "entity_id": {
           "description": "The entity ID of which an state attribute can be selected from",
-          "type": "string"
+          "$ref": "../defs.schema.json#/$defs/entity_id"
         }
       },
       "required": [
@@ -341,7 +341,7 @@
       "properties": {
         "entity_id": {
           "description": "The entity ID of which an state can be selected from",
-          "type": "string"
+          "$ref": "../defs.schema.json#/$defs/entity_id"
         }
       },
       "required": [
@@ -458,7 +458,7 @@
       }
     },
     "device_class": {
-      "description": "Limits the list of devices to devices that have entities with a certain device class, for example, 'motion' or 'window'\nhttps://www.home-assistant.io/docs/configuration/customizing-devices/#device-class",
+      "description": "Limits the list of devices to devices that have entities with a certain device class, for example, 'motion' or 'window'",
       "enum": [
         "binary_sensor",
         "cover",

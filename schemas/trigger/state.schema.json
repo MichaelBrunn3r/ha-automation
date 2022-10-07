@@ -7,7 +7,7 @@
       "const": "state"
     },
     "entity_id": {
-      "$ref": "../defs.schema.json#/$defs/str|str[]"
+      "$ref": "../defs.schema.json#/$defs/entity_id|entity_id[]"
     },
     "from": {
       "oneOf": [
