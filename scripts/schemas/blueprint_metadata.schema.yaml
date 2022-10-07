@@ -21,6 +21,7 @@ properties:
       min_version:
         description: "Minimum required version of Home Assistant to use the blueprint (e.g. '2022.4.0'. It is important to set this if the blueprint uses any features introduced in recent releases to head off issues"
         type: string
+        pattern: ^.+\..+\..+$
   input:
     description: "A dictionary of defined user inputs. These are the input fields that the consumer of your blueprint can provide using YAML definition, or via a configuration form in the UI"
     type: object
