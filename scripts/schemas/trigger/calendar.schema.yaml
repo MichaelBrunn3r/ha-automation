@@ -15,10 +15,6 @@ properties:
     $ref: "../defs.schema.yaml#/$defs/str|str[]"
   offset:
     $ref: "../defs.schema.yaml#/$defs/HHMMSS_offset"
-  id:
-    type: string
-  enable:
-    type: boolean
 required:
   - platform
   - event

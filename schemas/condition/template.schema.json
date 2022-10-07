@@ -8,14 +8,14 @@
     {
       "type": "object",
       "properties": {
-        "alias": {
-          "type": "string"
-        },
         "condition": {
           "const": "template"
         },
         "value_template": {
           "$ref": "../defs.schema.json#/$defs/template"
+        },
+        "alias": {
+          "type": "string"
         },
         "enabled": {
           "type": "boolean"

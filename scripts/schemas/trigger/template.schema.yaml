@@ -12,10 +12,6 @@ properties:
     oneOf:
       - $ref: "../defs.schema.yaml#/$defs/HHMMSS"
       - $ref: "../defs.schema.yaml#/$defs/templateable_time_period"
-  id:
-    type: string
-  enable:
-    type: boolean
 required:
   - platform
   - value_template

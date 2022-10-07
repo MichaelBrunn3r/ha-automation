@@ -8,10 +8,6 @@ properties:
     const: time
   at:
     $ref: "../defs.schema.yaml#/$defs/str|str[]"
-  id:
-    type: string
-  enable:
-    type: boolean
 required:
   - platform
   - at

@@ -2,8 +2,6 @@ title: State Condition
 description: Tests if an entity is a specified state
 type: object
 properties:
-  alias:
-    type: string
   condition:
     const: state
   entity_id:
@@ -20,8 +18,6 @@ properties:
     const: any
   for:
     $ref: "../defs.schema.yaml#/$defs/time_period"
-  enabled:
-    type: boolean
 required:
   - condition
   - entity_id

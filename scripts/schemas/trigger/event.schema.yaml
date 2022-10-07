@@ -15,10 +15,6 @@ properties:
     $ref: "../defs.schema.yaml#/$defs/obj|template"
   context:
     $ref: "../defs.schema.yaml#/$defs/obj|template"
-  id:
-    type: string
-  enable:
-    type: boolean
 required:
   - platform
   - event_type

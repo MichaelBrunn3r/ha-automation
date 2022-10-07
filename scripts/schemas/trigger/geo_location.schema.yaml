@@ -14,10 +14,6 @@ properties:
     enum:
       - enter
       - leave
-  id:
-    type: string
-  enable:
-    type: boolean
 required:
   - platform
   - entity_id

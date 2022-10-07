@@ -3,9 +3,6 @@
   "description": "Zone conditions test if an entity is in a certain zone",
   "type": "object",
   "properties": {
-    "alias": {
-      "type": "string"
-    },
     "condition": {
       "const": "zone"
     },
@@ -30,6 +27,9 @@
       "items": {
         "$ref": "../defs.schema.json#/$defs/zone"
       }
+    },
+    "alias": {
+      "type": "string"
     },
     "enabled": {
       "type": "boolean"

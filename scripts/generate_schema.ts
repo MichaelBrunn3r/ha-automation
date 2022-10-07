@@ -18,13 +18,48 @@ function generateSchema(file: string) {
     return;
   }
 
-  // Replace .yaml references with .json
+  // Replace .yaml with .json in $reg values
   schema = mapEntriesRecursive((k, v) => k)((k, v) => (k === '$ref' ? (v as string).replace('.yaml', '.json') : v))(
     schema
   );
 
+  // Adding $schema and $id to all schemas
   schema['$schema'] = 'http://json-schema.org/draft-07/schema#';
   schema['$id'] = `http://github.com/MichaelBrunn3r/ha-blueprints/schemas/${dest.substring('schemas/'.length)}`;
+
+  // Add alias and enabled to condition schemas
+  if (file.startsWith('scripts/schemas/condition')) {
+    if ('properties' in schema) {
+      const properties = schema['properties'];
+      properties['alias'] = { type: 'string' };
+      properties['enabled'] = { type: 'boolean' };
+    } else if ('oneOf' in schema) {
+      schema['oneOf'].forEach((entry: Record<string, any>) => {
+        if ('properties' in entry) {
+          const properties = entry['properties'];
+          properties['alias'] = { type: 'string' };
+          properties['enabled'] = { type: 'boolean' };
+        }
+      });
+    }
+  }
+
+  // Add id and enabled to trigger schemas
+  if (file.startsWith('scripts/schemas/trigger')) {
+    if ('properties' in schema) {
+      const properties = schema['properties'];
+      properties['id'] = { type: 'string' };
+      properties['enabled'] = { type: 'boolean' };
+    } else if ('oneOf' in schema) {
+      schema['oneOf'].forEach((entry: Record<string, any>) => {
+        if ('properties' in entry) {
+          const properties = entry['properties'];
+          properties['id'] = { type: 'string' };
+          properties['enabled'] = { type: 'boolean' };
+        }
+      });
+    }
+  }
 
   fs.writeFileSync(dest, JSON.stringify(schema, null, 2) + '\n');
 }

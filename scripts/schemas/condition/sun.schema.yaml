@@ -2,8 +2,6 @@ title: Sun Condition
 description: The sun state can be used to test if the sun has set or risen
 type: object
 properties:
-  alias:
-    type: string
   condition:
     const: sun
   entity_id:
@@ -24,7 +22,5 @@ properties:
     $ref: "../defs.schema.yaml#/$defs/HHMMSS_offset"
   before_offset:
     $ref: "../defs.schema.yaml#/$defs/HHMMSS_offset"
-  enabled:
-    type: boolean
 required:
   - condition

@@ -3,16 +3,12 @@ description: Test multiple conditions in one condition statement. Passes if all 
 oneOf:
   - type: object
     properties:
-      alias:
-        type: string
       condition:
         const: and
       conditions:
         type: array
         items:
           $ref: ../condition.schema.yaml
-      enabled:
-        type: boolean
     required:
       - condition
       - conditions
@@ -21,13 +17,9 @@ oneOf:
       $ref: ../condition.schema.yaml
   - type: object
     properties:
-      alias:
-        type: string
       and:
         type: array
         items:
           $ref: ../condition.schema.yaml
-      enabled:
-        type: boolean
     required:
       - and

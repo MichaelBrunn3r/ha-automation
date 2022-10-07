@@ -8,10 +8,6 @@ properties:
     enum:
       - start
       - shutdown
-  id:
-    type: string
-  enable:
-    type: boolean
 required:
   - platform
   - event

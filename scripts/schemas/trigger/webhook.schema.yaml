@@ -8,10 +8,6 @@ properties:
     const: webhook
   webhook_id:
     type: string
-  id:
-    type: string
-  enable:
-    type: boolean
 required:
   - platform
   - webhook_id

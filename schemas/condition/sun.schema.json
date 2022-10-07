@@ -3,9 +3,6 @@
   "description": "The sun state can be used to test if the sun has set or risen",
   "type": "object",
   "properties": {
-    "alias": {
-      "type": "string"
-    },
     "condition": {
       "const": "sun"
     },
@@ -35,6 +32,9 @@
     },
     "before_offset": {
       "$ref": "../defs.schema.json#/$defs/HHMMSS_offset"
+    },
+    "alias": {
+      "type": "string"
     },
     "enabled": {
       "type": "boolean"

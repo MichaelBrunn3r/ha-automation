@@ -3,9 +3,6 @@
   "description": "This type of condition attempts to parse the state of the specified entity or the attribute of an entity as a number, and triggers if the value matches the thresholds",
   "type": "object",
   "properties": {
-    "alias": {
-      "type": "string"
-    },
     "condition": {
       "const": "numeric_state"
     },
@@ -48,6 +45,9 @@
       "$ref": "../defs.schema.json#/$defs/template"
     },
     "attribute": {
+      "type": "string"
+    },
+    "alias": {
       "type": "string"
     },
     "enabled": {

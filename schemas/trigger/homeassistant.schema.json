@@ -15,7 +15,7 @@
     "id": {
       "type": "string"
     },
-    "enable": {
+    "enabled": {
       "type": "boolean"
     }
   },

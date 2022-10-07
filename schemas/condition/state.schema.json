@@ -3,9 +3,6 @@
   "description": "Tests if an entity is a specified state",
   "type": "object",
   "properties": {
-    "alias": {
-      "type": "string"
-    },
     "condition": {
       "const": "state"
     },
@@ -33,6 +30,9 @@
     },
     "for": {
       "$ref": "../defs.schema.json#/$defs/time_period"
+    },
+    "alias": {
+      "type": "string"
     },
     "enabled": {
       "type": "boolean"

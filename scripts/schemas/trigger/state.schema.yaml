@@ -37,10 +37,6 @@ properties:
       - $ref: "../defs.schema.yaml#/$defs/templateable_time_period"
   attribute:
     type: string
-  id:
-    type: string
-  enable:
-    type: boolean
 required:
   - platform
   - entity_id

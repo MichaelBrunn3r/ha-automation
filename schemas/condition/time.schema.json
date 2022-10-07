@@ -3,9 +3,6 @@
   "description": "The time condition can test if it is after a specified time, before a specified time or if it is a certain day of the week",
   "type": "object",
   "properties": {
-    "alias": {
-      "type": "string"
-    },
     "condition": {
       "const": "time"
     },
@@ -44,6 +41,9 @@
           "sun"
         ]
       }
+    },
+    "alias": {
+      "type": "string"
     },
     "enabled": {
       "type": "boolean"

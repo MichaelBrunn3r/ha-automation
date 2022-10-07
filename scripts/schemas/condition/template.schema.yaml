@@ -4,14 +4,10 @@ oneOf:
   - $ref: "../defs.schema.yaml#/$defs/template"
   - type: object
     properties:
-      alias:
-        type: string
       condition:
         const: template
       value_template:
         $ref: "../defs.schema.yaml#/$defs/template"
-      enabled:
-        type: boolean
     required:
       - condition
       - value_template

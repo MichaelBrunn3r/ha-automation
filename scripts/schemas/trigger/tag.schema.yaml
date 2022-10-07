@@ -8,10 +8,6 @@ properties:
     $ref: "../defs.schema.yaml#/$defs/str|str[]"
   device_id:
     $ref: "../defs.schema.yaml#/$defs/str|str[]"
-  id:
-    type: string
-  enable:
-    type: boolean
 required:
   - platform
   - tag_id

@@ -2,8 +2,6 @@ title: Time Condition
 description: "The time condition can test if it is after a specified time, before a specified time or if it is a certain day of the week"
 type: object
 properties:
-  alias:
-    type: string
   condition:
     const: time
   after:
@@ -27,7 +25,5 @@ properties:
         - fri
         - sat
         - sun
-  enabled:
-    type: boolean
 required:
   - condition

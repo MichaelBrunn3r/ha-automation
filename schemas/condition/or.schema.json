@@ -5,9 +5,6 @@
     {
       "type": "object",
       "properties": {
-        "alias": {
-          "type": "string"
-        },
         "condition": {
           "const": "or"
         },
@@ -16,6 +13,9 @@
           "items": {
             "$ref": "../condition.schema.json"
           }
+        },
+        "alias": {
+          "type": "string"
         },
         "enabled": {
           "type": "boolean"
@@ -29,14 +29,14 @@
     {
       "type": "object",
       "properties": {
-        "alias": {
-          "type": "string"
-        },
         "or": {
           "type": "array",
           "items": {
             "$ref": "../condition.schema.json"
           }
+        },
+        "alias": {
+          "type": "string"
         },
         "enabled": {
           "type": "boolean"

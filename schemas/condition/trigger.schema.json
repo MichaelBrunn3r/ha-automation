@@ -3,9 +3,6 @@
   "description": "The trigger condition can test if an automation was triggered by a certain trigger, identified by the trigger's 'id'",
   "type": "object",
   "properties": {
-    "alias": {
-      "type": "string"
-    },
     "condition": {
       "const": "trigger"
     },
@@ -21,6 +18,9 @@
           }
         }
       ]
+    },
+    "alias": {
+      "type": "string"
     },
     "enabled": {
       "type": "boolean"
