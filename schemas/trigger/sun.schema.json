@@ -13,7 +13,7 @@
       ]
     },
     "offset": {
-      "$ref": "../defs.schema.json#/$defs/time_offset_str"
+      "$ref": "../defs.schema.json#/$defs/HHMMSS_offset"
     },
     "id": {
       "type": "string"

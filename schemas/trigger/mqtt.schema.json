@@ -7,10 +7,10 @@
       "const": "mqtt"
     },
     "topic": {
-      "$ref": "../defs.schema.json#/$defs/string_or_template"
+      "type": "string"
     },
     "payload": {
-      "$ref": "../defs.schema.json#/$defs/string_or_template"
+      "type": "string"
     },
     "encoding": {
       "type": "string",

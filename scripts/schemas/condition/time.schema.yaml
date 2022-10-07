@@ -8,12 +8,12 @@ properties:
     const: time
   after:
     oneOf:
-      - $ref: "../defs.schema.yaml#/$defs/time_str"
+      - $ref: "../defs.schema.yaml#/$defs/HHMMSS"
       - type: string
         pattern: ^(input_datetime|sensor)\..+
   before:
     oneOf:
-      - $ref: "../defs.schema.yaml#/$defs/time_str"
+      - $ref: "../defs.schema.yaml#/$defs/HHMMSS"
       - type: string
         pattern: ^(input_datetime|sensor)\..+
   weekday:

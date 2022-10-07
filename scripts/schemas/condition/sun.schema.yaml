@@ -21,9 +21,9 @@ properties:
       - sunset
       - sunrise
   after_offset:
-    $ref: "../defs.schema.yaml#/$defs/time_offset_str"
+    $ref: "../defs.schema.yaml#/$defs/HHMMSS_offset"
   before_offset:
-    $ref: "../defs.schema.yaml#/$defs/time_offset_str"
+    $ref: "../defs.schema.yaml#/$defs/HHMMSS_offset"
   enabled:
     type: boolean
 required:

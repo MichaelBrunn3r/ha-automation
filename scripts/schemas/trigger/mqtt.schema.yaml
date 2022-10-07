@@ -5,9 +5,9 @@ properties:
   platform:
     const: mqtt
   topic:
-    $ref: "../defs.schema.yaml#/$defs/string_or_template"
+    type: string
   payload:
-    $ref: "../defs.schema.yaml#/$defs/string_or_template"
+    type: string
   encoding:
     type: string
     examples:

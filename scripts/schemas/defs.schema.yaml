@@ -3,25 +3,20 @@ $defs:
     description: A template string.
     type: string
     pattern: .*(\{\{.+\}\}).* # Must contain at least one {{ }}
-  object_or_template:
+  obj|template:
     oneOf:
       - $ref: "#/$defs/template"
       - type: object
-  string_or_template:
-    type: string
-  str_or_str_list:
+  str|str[]:
     oneOf:
       - type: string
       - type: array
         items:
           type: string
-  helper_entity:
-    type: string
-    pattern: ^input_.+
-  time_str:
+  HHMMSS:
     type: string
     pattern: \d\d:\d\d:\d\d # Time format "HH:MM:SS"
-  time_offset_str:
+  HHMMSS_offset:
     type: string
     pattern: -?\d\d:\d\d:\d\d # Signed time format "HH:MM:SS"
   time_period:

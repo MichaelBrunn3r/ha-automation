@@ -12,9 +12,9 @@ properties:
           $ref: "#/$defs/event_type"
         uniqueItems: true
   event_data:
-    $ref: "../defs.schema.yaml#/$defs/object_or_template"
+    $ref: "../defs.schema.yaml#/$defs/obj|template"
   context:
-    $ref: "../defs.schema.yaml#/$defs/object_or_template"
+    $ref: "../defs.schema.yaml#/$defs/obj|template"
   id:
     type: string
   enable:

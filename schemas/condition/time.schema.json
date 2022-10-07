@@ -12,7 +12,7 @@
     "after": {
       "oneOf": [
         {
-          "$ref": "../defs.schema.json#/$defs/time_str"
+          "$ref": "../defs.schema.json#/$defs/HHMMSS"
         },
         {
           "type": "string",
@@ -23,7 +23,7 @@
     "before": {
       "oneOf": [
         {
-          "$ref": "../defs.schema.json#/$defs/time_str"
+          "$ref": "../defs.schema.json#/$defs/HHMMSS"
         },
         {
           "type": "string",

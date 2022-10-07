@@ -7,7 +7,7 @@ properties:
   platform:
     const: time
   at:
-    $ref: "../defs.schema.yaml#/$defs/str_or_str_list"
+    $ref: "../defs.schema.yaml#/$defs/str|str[]"
   id:
     type: string
   enable:

@@ -12,7 +12,7 @@
     "for": {
       "oneOf": [
         {
-          "$ref": "../defs.schema.json#/$defs/time_str"
+          "$ref": "../defs.schema.json#/$defs/HHMMSS"
         },
         {
           "$ref": "../defs.schema.json#/$defs/templateable_time_period"

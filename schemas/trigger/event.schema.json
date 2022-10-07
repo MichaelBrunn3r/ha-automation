@@ -21,10 +21,10 @@
       ]
     },
     "event_data": {
-      "$ref": "../defs.schema.json#/$defs/object_or_template"
+      "$ref": "../defs.schema.json#/$defs/obj|template"
     },
     "context": {
-      "$ref": "../defs.schema.json#/$defs/object_or_template"
+      "$ref": "../defs.schema.json#/$defs/obj|template"
     },
     "id": {
       "type": "string"

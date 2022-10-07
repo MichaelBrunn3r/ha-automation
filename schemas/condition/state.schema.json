@@ -26,20 +26,7 @@
       "type": "string"
     },
     "state": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        {
-          "$ref": "../defs.schema.json#/$defs/helper_entity"
-        }
-      ]
+      "$ref": "../defs.schema.json#/$defs/str|str[]"
     },
     "match": {
       "const": "any"
