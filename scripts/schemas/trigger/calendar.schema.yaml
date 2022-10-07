@@ -1,0 +1,25 @@
+title: Calendar trigger
+description:
+  Calendar trigger fires when a Calendar event starts or ends, allowing
+  much more flexible automations that using the Calendar entity state which only supports
+  a single event start at a time
+type: object
+properties:
+  platform:
+    const: calendar
+  event:
+    enum:
+      - start
+      - end
+  entity_id:
+    $ref: "../defs.schema.yaml#/$defs/str_or_str_list"
+  offset:
+    $ref: "../defs.schema.yaml#/$defs/time_offset_str"
+  id:
+    type: string
+  enable:
+    type: boolean
+required:
+  - platform
+  - event
+  - entity_id

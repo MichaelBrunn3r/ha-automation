@@ -1,0 +1,24 @@
+title: MQTT trigger
+description: Fires when a specific message is received on given MQTT topic
+type: object
+properties:
+  platform:
+    const: mqtt
+  topic:
+    $ref: "../defs.schema.yaml#/$defs/string_or_template"
+  payload:
+    $ref: "../defs.schema.yaml#/$defs/string_or_template"
+  encoding:
+    type: string
+    examples:
+      - ""
+    default: utf-8
+  value_template:
+    $ref: "../defs.schema.yaml#/$defs/template"
+  id:
+    type: string
+  enable:
+    type: boolean
+required:
+  - platform
+  - topic

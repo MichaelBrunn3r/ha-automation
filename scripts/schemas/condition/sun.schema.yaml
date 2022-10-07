@@ -1,0 +1,30 @@
+title: Sun Condition
+description: The sun state can be used to test if the sun has set or risen
+type: object
+properties:
+  alias:
+    type: string
+  condition:
+    const: sun
+  entity_id:
+    type: string
+  state:
+    enum:
+      - above_horizon
+      - below_horizon
+  after:
+    enum:
+      - sunset
+      - sunrise
+  before:
+    enum:
+      - sunset
+      - sunrise
+  after_offset:
+    $ref: "../defs.schema.yaml#/$defs/time_offset_str"
+  before_offset:
+    $ref: "../defs.schema.yaml#/$defs/time_offset_str"
+  enabled:
+    type: boolean
+required:
+  - condition

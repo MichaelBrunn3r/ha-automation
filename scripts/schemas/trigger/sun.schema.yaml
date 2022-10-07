@@ -1,0 +1,21 @@
+title: Sun trigger
+description:
+  Fires when the sun is setting or rising, i.e., when the sun elevation
+  reaches 0°
+type: object
+properties:
+  platform:
+    const: sun
+  event:
+    enum:
+      - sunset
+      - sunrise
+  offset:
+    $ref: "../defs.schema.yaml#/$defs/time_offset_str"
+  id:
+    type: string
+  enable:
+    type: boolean
+required:
+  - platform
+  - event

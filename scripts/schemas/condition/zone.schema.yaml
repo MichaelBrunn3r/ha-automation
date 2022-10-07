@@ -1,0 +1,25 @@
+title: Zone Condition
+description: Zone conditions test if an entity is in a certain zone
+type: object
+properties:
+  alias:
+    type: string
+  condition:
+    const: zone
+  entity_id:
+    oneOf:
+      - type: string
+      - type: array
+        items:
+          type: string
+  zone:
+    $ref: "../defs.schema.yaml#/$defs/zone_id"
+  state:
+    type: array
+    items:
+      $ref: "../defs.schema.yaml#/$defs/zone_id"
+  enabled:
+    type: boolean
+required:
+  - condition
+  - entity_id

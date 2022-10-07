@@ -1,0 +1,25 @@
+title: Geolocation trigger
+description:
+  Geolocation trigger fires when an entity is appearing in or disappearing
+  from a zone
+type: object
+properties:
+  platform:
+    const: geo_location
+  entity_id:
+    $ref: "../defs.schema.yaml#/$defs/str_or_str_list"
+  zone:
+    type: string
+  event:
+    enum:
+      - enter
+      - leave
+  id:
+    type: string
+  enable:
+    type: boolean
+required:
+  - platform
+  - entity_id
+  - zone
+  - event

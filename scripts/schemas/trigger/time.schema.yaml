@@ -1,0 +1,17 @@
+title: Time trigger
+description:
+  The time trigger is configured to fire once a day at a specific time,
+  or at a specific time on a specific date
+type: object
+properties:
+  platform:
+    const: time
+  at:
+    $ref: "../defs.schema.yaml#/$defs/str_or_str_list"
+  id:
+    type: string
+  enable:
+    type: boolean
+required:
+  - platform
+  - at

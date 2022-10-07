@@ -1,0 +1,11 @@
+oneOf:
+  - $ref: condition/and.schema.yaml
+  - $ref: condition/not.schema.yaml
+  - $ref: condition/numeric_state.schema.yaml
+  - $ref: condition/or.schema.yaml
+  - $ref: condition/state.schema.yaml
+  - $ref: condition/sun.schema.yaml
+  - $ref: condition/template.schema.yaml
+  - $ref: condition/time.schema.yaml
+  - $ref: condition/trigger.schema.yaml
+  - $ref: condition/zone.schema.yaml

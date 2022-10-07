@@ -1,0 +1,15 @@
+oneOf:
+  - $ref: trigger/calendar.schema.yaml
+  - $ref: trigger/event.schema.yaml
+  - $ref: trigger/geo_location.schema.yaml
+  - $ref: trigger/homeassistant.schema.yaml
+  - $ref: trigger/mqtt.schema.yaml
+  - $ref: trigger/numeric_state.schema.yaml
+  - $ref: trigger/state.schema.yaml
+  - $ref: trigger/sun.schema.yaml
+  - $ref: trigger/tag.schema.yaml
+  - $ref: trigger/template.schema.yaml
+  - $ref: trigger/time_pattern.schema.yaml
+  - $ref: trigger/time.schema.yaml
+  - $ref: trigger/webhook.schema.yaml
+  - $ref: trigger/zone.schema.yaml

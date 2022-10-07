@@ -1,0 +1,17 @@
+title: Template Condition
+description: The template condition tests if the given template renders a value equal to true
+oneOf:
+  - $ref: "../defs.schema.yaml#/$defs/template"
+  - type: object
+    properties:
+      alias:
+        type: string
+      condition:
+        const: template
+      value_template:
+        $ref: "../defs.schema.yaml#/$defs/template"
+      enabled:
+        type: boolean
+    required:
+      - condition
+      - value_template

@@ -1,0 +1,17 @@
+title: Home Assistant trigger
+description: Fires when Home Assistant starts up or shuts down
+type: object
+properties:
+  platform:
+    const: homeassistant
+  event:
+    enum:
+      - start
+      - shutdown
+  id:
+    type: string
+  enable:
+    type: boolean
+required:
+  - platform
+  - event

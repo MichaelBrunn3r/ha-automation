@@ -1,6 +1,7 @@
 {
   "yaml.schemas": {
-    "schemas/automation_blueprint.schema.json": ["blueprints/*.yaml", "schemas/__tests__/blueprints/examples/*.yaml"]
+    "schemas/automation_blueprint.schema.json": ["blueprints/*.yaml", "schemas/__tests__/blueprints/examples/*.yaml"],
+    "http://json-schema.org/draft-07/schema": ["scripts/schemas/**/*.yaml"]
   },
   "yaml.customTags": ["!input"]
 }

@@ -1,0 +1,46 @@
+title: State trigger
+description: Fires when the state of any of given entities changes
+type: object
+properties:
+  platform:
+    const: state
+  entity_id:
+    $ref: "../defs.schema.yaml#/$defs/str_or_str_list"
+  from:
+    oneOf:
+      - type: string
+      - type: array
+        items:
+          type: string
+  not_from:
+    oneOf:
+      - type: string
+      - type: array
+        items:
+          type: string
+  to:
+    oneOf:
+      - type: string
+      - type: array
+        items:
+          type: string
+      - type: "null"
+  not_to:
+    oneOf:
+      - type: string
+      - type: array
+        items:
+          type: string
+  for:
+    oneOf:
+      - $ref: "../defs.schema.yaml#/$defs/time_str"
+      - $ref: "../defs.schema.yaml#/$defs/templateable_time_period"
+  attribute:
+    type: string
+  id:
+    type: string
+  enable:
+    type: boolean
+required:
+  - platform
+  - entity_id

@@ -1,7 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Blueprint metadata\nhttps://www.home-assistant.io/docs/blueprint/schema/",
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/blueprint_metadata.schema.json",
   "type": "object",
   "properties": {
     "name": {
@@ -59,5 +57,7 @@
   "required": [
     "name",
     "domain"
-  ]
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/blueprint_metadata.schema.json"
 }

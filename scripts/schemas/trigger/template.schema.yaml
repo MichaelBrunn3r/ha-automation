@@ -1,0 +1,21 @@
+title: Template trigger
+description:
+  Template triggers work by evaluating a template when any of the recognized
+  entities change state
+type: object
+properties:
+  platform:
+    const: template
+  value_template:
+    $ref: "../defs.schema.yaml#/$defs/template"
+  for:
+    oneOf:
+      - $ref: "../defs.schema.yaml#/$defs/time_str"
+      - $ref: "../defs.schema.yaml#/$defs/templateable_time_period"
+  id:
+    type: string
+  enable:
+    type: boolean
+required:
+  - platform
+  - value_template

@@ -1,0 +1,33 @@
+title: Time Condition
+description: "The time condition can test if it is after a specified time, before a specified time or if it is a certain day of the week"
+type: object
+properties:
+  alias:
+    type: string
+  condition:
+    const: time
+  after:
+    oneOf:
+      - $ref: "../defs.schema.yaml#/$defs/time_str"
+      - type: string
+        pattern: "^(input_datetime|sensor)\\..+"
+  before:
+    oneOf:
+      - $ref: "../defs.schema.yaml#/$defs/time_str"
+      - type: string
+        pattern: "^(input_datetime|sensor)\\..+"
+  weekday:
+    type: array
+    items:
+      enum:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+  enabled:
+    type: boolean
+required:
+  - condition

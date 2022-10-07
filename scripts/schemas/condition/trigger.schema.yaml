@@ -1,0 +1,19 @@
+title: Trigger Condition
+description: "The trigger condition can test if an automation was triggered by a certain trigger, identified by the trigger's 'id'"
+type: object
+properties:
+  alias:
+    type: string
+  condition:
+    const: trigger
+  id:
+    oneOf:
+      - type: string
+      - type: array
+        items:
+          type: string
+  enabled:
+    type: boolean
+required:
+  - condition
+  - id

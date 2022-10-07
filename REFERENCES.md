@@ -8,3 +8,4 @@
 8. [Test JSON schema with AJV and Jest](https://moshfeu.medium.com/test-json-schema-with-ajv-and-jest-c1d2984234c9)
 9. [Jest config: globalSetup](https://jestjs.io/docs/configuration#globalsetup-string)
 10. [Going too far with Jest Custom Matchers in TypeScript](https://haspar.us/notes/adding-jest-custom-matchers-in-typescript/)
+11. [Upon error, does ajv also display the line number details ?](https://github.com/ajv-validator/ajv/issues/763)
