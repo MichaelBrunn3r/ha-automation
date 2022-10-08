@@ -11,7 +11,7 @@ properties:
       - sunset
       - sunrise
   offset:
-    $ref: "../defs.schema.yaml#/$defs/HHMMSS_offset"
+    $ref: "../defs.schema.json#/$defs/HHMMSS_offset"
 required:
   - platform
   - event

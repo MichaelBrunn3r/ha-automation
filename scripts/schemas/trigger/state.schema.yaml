@@ -5,7 +5,7 @@ properties:
   platform:
     const: state
   entity_id:
-    $ref: "../defs.schema.yaml#/$defs/entity_id|entity_id[]"
+    $ref: "../defs.schema.json#/$defs/entity_id|entity_id[]"
   from:
     oneOf:
       - type: string
@@ -33,8 +33,8 @@ properties:
           type: string
   for:
     oneOf:
-      - $ref: "../defs.schema.yaml#/$defs/HHMMSS"
-      - $ref: "../defs.schema.yaml#/$defs/templateable_time_period"
+      - $ref: "../defs.schema.json#/$defs/HHMMSS"
+      - $ref: "../defs.schema.json#/$defs/templateable_time_period"
   attribute:
     type: string
 required:

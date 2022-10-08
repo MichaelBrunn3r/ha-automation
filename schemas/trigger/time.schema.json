@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/time.schema.json",
   "title": "Time trigger",
   "description": "The time trigger is configured to fire once a day at a specific time, or at a specific time on a specific date",
   "type": "object",
@@ -19,7 +21,5 @@
   "required": [
     "platform",
     "at"
-  ],
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/time.schema.json"
+  ]
 }

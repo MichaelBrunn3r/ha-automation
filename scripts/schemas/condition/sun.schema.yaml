@@ -5,7 +5,7 @@ properties:
   condition:
     const: sun
   entity_id:
-    $ref: "../defs.schema.yaml#/$defs/entity_id"
+    $ref: "../defs.schema.json#/$defs/entity_id"
   state:
     enum:
       - above_horizon
@@ -19,8 +19,8 @@ properties:
       - sunset
       - sunrise
   after_offset:
-    $ref: "../defs.schema.yaml#/$defs/HHMMSS_offset"
+    $ref: "../defs.schema.json#/$defs/HHMMSS_offset"
   before_offset:
-    $ref: "../defs.schema.yaml#/$defs/HHMMSS_offset"
+    $ref: "../defs.schema.json#/$defs/HHMMSS_offset"
 required:
   - condition

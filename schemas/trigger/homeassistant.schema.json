@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/homeassistant.schema.json",
   "title": "Home Assistant trigger",
   "description": "Fires when Home Assistant starts up or shuts down",
   "type": "object",
@@ -22,7 +24,5 @@
   "required": [
     "platform",
     "event"
-  ],
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/homeassistant.schema.json"
+  ]
 }

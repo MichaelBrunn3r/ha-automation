@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/condition/and.schema.json",
   "title": "AND Condition",
   "description": "Test multiple conditions in one condition statement. Passes if all embedded conditions are valid",
   "oneOf": [
@@ -52,7 +54,5 @@
         "and"
       ]
     }
-  ],
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/condition/and.schema.json"
+  ]
 }

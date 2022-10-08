@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/condition/numeric_state.schema.json",
   "title": "Numeric State Condition",
   "description": "This type of condition attempts to parse the state of the specified entity or the attribute of an entity as a number, and triggers if the value matches the thresholds",
   "type": "object",
@@ -47,7 +49,5 @@
   "required": [
     "condition",
     "entity_id"
-  ],
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/condition/numeric_state.schema.json"
+  ]
 }

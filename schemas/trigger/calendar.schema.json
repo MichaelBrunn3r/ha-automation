@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/calendar.schema.json",
   "title": "Calendar trigger",
   "description": "Calendar trigger fires when a Calendar event starts or ends, allowing much more flexible automations that using the Calendar entity state which only supports a single event start at a time",
   "type": "object",
@@ -29,7 +31,5 @@
     "platform",
     "event",
     "entity_id"
-  ],
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/calendar.schema.json"
+  ]
 }

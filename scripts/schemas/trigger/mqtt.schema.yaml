@@ -14,7 +14,7 @@ properties:
       - ""
     default: utf-8
   value_template:
-    $ref: "../defs.schema.yaml#/$defs/template"
+    $ref: "../defs.schema.json#/$defs/template"
 required:
   - platform
   - topic

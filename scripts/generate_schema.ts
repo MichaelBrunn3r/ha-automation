@@ -2,84 +2,63 @@ import fs from 'fs';
 import path from 'path';
 import glob from 'glob';
 import yaml from 'js-yaml';
-import { mapEntriesRecursive } from './utils';
 import chokidar from 'chokidar';
 
 function generateSchema(file: string) {
-  let dest = file.substring('scripts/'.length);
-  dest = path.dirname(dest) + '/' + path.basename(dest, '.yaml') + '.json';
-
-  // Load schema
-  let schema: Record<string, any>;
-  try {
-    schema = yaml.load(fs.readFileSync(file, 'utf8')) as Record<string, any>;
-  } catch (e) {
-    console.error(`Failed to load schema ${file}: ${e}`);
-    return;
-  }
-
-  // Replace .yaml with .json in $reg values
-  schema = mapEntriesRecursive((k, v) => k)((k, v) => (k === '$ref' ? (v as string).replace('.yaml', '.json') : v))(
-    schema
-  );
+  let dest = path.posix.relative('scripts', file).replace('.yaml', '.json');
+  let schema: Record<string, any> = yaml.load(fs.readFileSync(file, 'utf8')) as Record<string, any>;
 
   // Adding $schema and $id to all schemas
-  schema['$schema'] = 'http://json-schema.org/draft-07/schema#';
-  schema['$id'] = `http://github.com/MichaelBrunn3r/ha-blueprints/schemas/${dest.substring('schemas/'.length)}`;
+  schema = {
+    $schema: 'http://json-schema.org/draft-07/schema#',
+    $id: `http://github.com/MichaelBrunn3r/ha-blueprints/${dest}`,
+    ...schema
+  };
 
-  // Add alias and enabled to condition schemas
+  let additionalProps: Record<string, any> | undefined;
   if (file.startsWith('scripts/schemas/condition')) {
+    additionalProps = { alias: { type: 'string' }, enabled: { type: 'boolean' } };
+  } else if (file.startsWith('scripts/schemas/trigger')) {
+    additionalProps = { id: { type: 'string' }, enabled: { type: 'boolean' } };
+  }
+
+  if (additionalProps) {
     if ('properties' in schema) {
-      const properties = schema['properties'];
-      properties['alias'] = { type: 'string' };
-      properties['enabled'] = { type: 'boolean' };
+      schema['properties'] = {
+        ...schema['properties'],
+        ...additionalProps
+      };
     } else if ('oneOf' in schema) {
-      schema['oneOf'].forEach((entry: Record<string, any>) => {
-        if ('properties' in entry) {
-          const properties = entry['properties'];
-          properties['alias'] = { type: 'string' };
-          properties['enabled'] = { type: 'boolean' };
-        }
-      });
+      schema['oneOf']
+        .filter((entry: Record<string, any>) => 'properties' in entry)
+        .forEach((entry: Record<string, any>) => {
+          entry['properties'] = {
+            ...entry['properties'],
+            ...additionalProps
+          };
+        });
     }
   }
 
-  // Add id and enabled to trigger schemas
-  if (file.startsWith('scripts/schemas/trigger')) {
-    if ('properties' in schema) {
-      const properties = schema['properties'];
-      properties['id'] = { type: 'string' };
-      properties['enabled'] = { type: 'boolean' };
-    } else if ('oneOf' in schema) {
-      schema['oneOf'].forEach((entry: Record<string, any>) => {
-        if ('properties' in entry) {
-          const properties = entry['properties'];
-          properties['id'] = { type: 'string' };
-          properties['enabled'] = { type: 'boolean' };
-        }
-      });
-    }
-  }
-
-  fs.writeFileSync(dest, JSON.stringify(schema, null, 2) + '\n');
-}
-
-function generateSchemas() {
-  glob.sync('scripts/schemas/**/*.schema.yaml').forEach((file) => generateSchema(file));
+  fs.writeFileSync(dest, JSON.stringify(schema, null, 2), { encoding: 'utf8' });
 }
 
 const args = process.argv.slice(2);
 const watch = args.includes('--watch');
 
 console.log('Generating schemas...');
-generateSchemas();
+glob.sync('scripts/schemas/**/*.schema.yaml').forEach((file) => generateSchema(file));
 
 if (watch) {
   console.log('Watching for changes...');
   chokidar.watch('scripts/schemas').on('change', (filename, stats) => {
     if (filename.endsWith('.schema.yaml')) {
       console.log(`${filename} changed...`);
-      generateSchema(filename);
+      try {
+        generateSchema(filename);
+      } catch (e) {
+        console.error(`Failed to generate schema ${filename}: ${e}`);
+      }
     }
   });
 }

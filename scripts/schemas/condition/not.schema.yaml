@@ -8,7 +8,7 @@ oneOf:
       conditions:
         type: array
         items:
-          $ref: ../condition.schema.yaml
+          $ref: ../condition.schema.json
     required:
       - condition
       - conditions
@@ -17,6 +17,6 @@ oneOf:
       not:
         type: array
         items:
-          $ref: ../condition.schema.yaml
+          $ref: ../condition.schema.json
     required:
       - not

@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/condition/sun.schema.json",
   "title": "Sun Condition",
   "description": "The sun state can be used to test if the sun has set or risen",
   "type": "object",
@@ -42,7 +44,5 @@
   },
   "required": [
     "condition"
-  ],
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/condition/sun.schema.json"
+  ]
 }

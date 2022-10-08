@@ -37,7 +37,7 @@ properties:
             description: A short description of the input field. Keep this short and descriptive. The description can include Markdown
             type: string
           selector:
-            $ref: input_selector.schema.yaml
+            $ref: input_selector.schema.json
           default:
             description: "The default value of this input, in case the input is not provided by the user of this blueprint."
 required:

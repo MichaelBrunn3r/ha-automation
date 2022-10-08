@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/template.schema.json",
   "title": "Template trigger",
   "description": "Template triggers work by evaluating a template when any of the recognized entities change state",
   "type": "object",
@@ -29,7 +31,5 @@
   "required": [
     "platform",
     "value_template"
-  ],
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/template.schema.json"
+  ]
 }

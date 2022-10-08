@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/time_pattern.schema.json",
   "title": "Time pattern trigger",
   "description": "With the time pattern trigger, you can match if the hour, minute or second of the current time matches a specific value",
   "type": "object",
@@ -27,7 +29,5 @@
   },
   "required": [
     "platform"
-  ],
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/time_pattern.schema.json"
+  ]
 }

@@ -7,7 +7,7 @@ properties:
   platform:
     const: time
   at:
-    $ref: "../defs.schema.yaml#/$defs/str|str[]"
+    $ref: "../defs.schema.json#/$defs/str|str[]"
 required:
   - platform
   - at

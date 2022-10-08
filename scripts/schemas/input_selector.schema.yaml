@@ -28,7 +28,7 @@ properties:
     properties:
       entity_id:
         description: The entity ID of which an state attribute can be selected from
-        $ref: "../defs.schema.yaml#/$defs/entity_id"
+        $ref: "../defs.schema.json#/$defs/entity_id"
     required:
       - entity_id
   boolean:
@@ -222,7 +222,7 @@ properties:
     properties:
       entity_id:
         description: The entity ID of which an state can be selected from
-        $ref: "../defs.schema.yaml#/$defs/entity_id"
+        $ref: "../defs.schema.json#/$defs/entity_id"
     required:
       - entity_id
   target:

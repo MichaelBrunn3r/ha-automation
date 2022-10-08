@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/condition/state.schema.json",
   "title": "State Condition",
   "description": "Tests if an entity is a specified state",
   "type": "object",
@@ -32,7 +34,5 @@
     "condition",
     "entity_id",
     "state"
-  ],
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/condition/state.schema.json"
+  ]
 }

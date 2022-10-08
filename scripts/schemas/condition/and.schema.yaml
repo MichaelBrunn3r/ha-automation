@@ -8,18 +8,18 @@ oneOf:
       conditions:
         type: array
         items:
-          $ref: ../condition.schema.yaml
+          $ref: ../condition.schema.json
     required:
       - condition
       - conditions
   - type: array
     items:
-      $ref: ../condition.schema.yaml
+      $ref: ../condition.schema.json
   - type: object
     properties:
       and:
         type: array
         items:
-          $ref: ../condition.schema.yaml
+          $ref: ../condition.schema.json
     required:
       - and

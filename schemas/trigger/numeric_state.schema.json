@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/numeric_state.schema.json",
   "title": "Numeric state trigger",
   "description": "Fires when the numeric value of an entity's state (or attribute's value if using the 'attribute' property, or the calculated value if using the 'value_template' property) crosses (and only when crossing) a given threshold",
   "type": "object",
@@ -41,7 +43,5 @@
   "required": [
     "platform",
     "entity_id"
-  ],
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/numeric_state.schema.json"
+  ]
 }

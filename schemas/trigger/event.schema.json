@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/event.schema.json",
   "title": "Event trigger",
   "description": "Fires when an event is being received",
   "type": "object",
@@ -63,7 +65,5 @@
         "script_started"
       ]
     }
-  },
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/event.schema.json"
+  }
 }

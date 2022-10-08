@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/state.schema.json",
   "title": "State trigger",
   "description": "Fires when the state of any of given entities changes",
   "type": "object",
@@ -87,7 +89,5 @@
   "required": [
     "platform",
     "entity_id"
-  ],
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/state.schema.json"
+  ]
 }

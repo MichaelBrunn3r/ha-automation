@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/mqtt.schema.json",
   "title": "MQTT trigger",
   "description": "Fires when a specific message is received on given MQTT topic",
   "type": "object",
@@ -32,7 +34,5 @@
   "required": [
     "platform",
     "topic"
-  ],
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://github.com/MichaelBrunn3r/ha-blueprints/schemas/trigger/mqtt.schema.json"
+  ]
 }

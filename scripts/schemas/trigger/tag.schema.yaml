@@ -5,9 +5,9 @@ properties:
   platform:
     const: tag
   tag_id:
-    $ref: "../defs.schema.yaml#/$defs/str|str[]"
+    $ref: "../defs.schema.json#/$defs/str|str[]"
   device_id:
-    $ref: "../defs.schema.yaml#/$defs/str|str[]"
+    $ref: "../defs.schema.json#/$defs/str|str[]"
 required:
   - platform
   - tag_id
