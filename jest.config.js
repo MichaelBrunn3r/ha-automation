@@ -5,6 +5,6 @@ export default {
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest'
   },
-  globalSetup: '<rootDir>/jest/global-setup.js',
-  setupFilesAfterEnv: ['<rootDir>/jest/setup-matchers.ts']
+  globalSetup: '<rootDir>/scripts/jest-global-setup.js',
+  setupFilesAfterEnv: ['<rootDir>/scripts/jest-setup-matchers.ts']
 };
