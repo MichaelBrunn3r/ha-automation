@@ -4,6 +4,8 @@ import glob from 'glob';
 import yaml from 'js-yaml';
 import chokidar from 'chokidar';
 
+const schemasRoot = 'scripts/schemas';
+
 function generateSchema(file: string) {
   let dest = path.posix.relative('scripts', file).replace('.yaml', '.json');
   let schema: Record<string, any> = yaml.load(fs.readFileSync(file, 'utf8')) as Record<string, any>;
@@ -43,22 +45,26 @@ function generateSchema(file: string) {
   fs.writeFileSync(dest, JSON.stringify(schema, null, 2), { encoding: 'utf8' });
 }
 
+function watchSchemas() {
+  if (watch) {
+    console.log('Watching for changes...');
+    chokidar.watch(schemasRoot).on('change', (filename, stats) => {
+      if (filename.endsWith('.schema.yaml')) {
+        console.log(`${filename} changed...`);
+        try {
+          generateSchema(filename);
+        } catch (e) {
+          console.error(`Failed to generate schema ${filename}: ${e}`);
+        }
+      }
+    });
+  }
+}
+
 const args = process.argv.slice(2);
 const watch = args.includes('--watch');
 
 console.log('Generating schemas...');
-glob.sync('scripts/schemas/**/*.schema.yaml').forEach((file) => generateSchema(file));
+glob.sync(`${schemasRoot}/**/*.schema.yaml`).forEach((file) => generateSchema(file));
 
-if (watch) {
-  console.log('Watching for changes...');
-  chokidar.watch('scripts/schemas').on('change', (filename, stats) => {
-    if (filename.endsWith('.schema.yaml')) {
-      console.log(`${filename} changed...`);
-      try {
-        generateSchema(filename);
-      } catch (e) {
-        console.error(`Failed to generate schema ${filename}: ${e}`);
-      }
-    }
-  });
-}
+watchSchemas();
