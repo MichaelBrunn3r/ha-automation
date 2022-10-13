@@ -5,71 +5,96 @@ blueprint:
     Optimal ventilation duration is dependent on the outside temperature.
   domain: automation
   input:
-    friendly_name:
-      name: Human readable entity name
-      description: What the entity will be called in the notification
+    entity:
+      name: The entity that will trigger the automation. This must be a binary sensor (ie. binary_sensor.ventilating_living_room)
       selector:
-        text:
+        entity:
+          domain: binary_sensor
     duration_warm:
-      name: Warm temperature duration
-      description: Duration after which to trigger the reminder, if it is warm outside
+      name: Max duration, warm outside
+      description: Duration after which to remind the user, if it is warm outside
       default:
         minutes: 15
       selector:
         duration:
     duration_cold:
-      name: Cold temperature duration
-      description: Duration after which to trigger the reminder, if it is cold outside
+      name: Max duration, cold outside
+      description: Duration after which to remind the user, if it is cold outside
       default:
         minutes: 5
       selector:
         duration:
-    temperature:
-      name: Boundary temperature
-      description: Temperature below which it is considered cold outside
+    temperature_entity:
+      name: Temperature entity
+      selector:
+        entity:
+          domain: sensor
+          device_class: temperature
+    temperature_transition_point:
+      name: Warm/Cold transition point
+      description: >
+        Temperature below which it is considered cold outside.
+        (Same unit as temperature entity)
+      default: 20
+      selector:
+        number:
+          min: 0
+          max: 68
+          unit_of_measurement: ˚C/˚F
+    notify_service:
+      name: Notify service
+      description: The service that will be called to deliver the notification (ie. notify.mobile_app_my_phone)
+      default: "notify.mobile_app_YOURDEVICE"
+      selector:
+        text:
     notification_msg:
       name: Notification Message
-      default: "{{ friendly_name }} was left open"
+      default: "Window was left open"
       selector:
         text:
 
 trigger:
   - platform: state
-    entity_id:
-      - binary_sensor.luften_michael
+    entity_id: !input entity
     from: "off"
     to: "on"
-    id: off_to_on
+    id: opened
   - platform: state
-    entity_id:
-      - binary_sensor.luften_michael
+    entity_id: !input entity
     from: "on"
     to: "off"
-    id: on_to_off
+    id: closed
 
 action:
-  - alias: Stop if ventilation stoped
+  # Guard clause for when window/door was closed
+  - alias: Window/Door closed
     if:
       - condition: trigger
-        id: on_to_off
+        id: closed
     then:
+      - alias: Remove notification if still present
+        service: !input notify_service
+        data:
+          message: clear_notification
+          data:
+            tag: lueften-duration-exceeded-michi
       - stop: Ventilation stoped
   - alias: Timeout until maximum ventilation duration (temperature dependent) was exceeded
     if:
-      - domain: sensor
-        type: is_temperature
-        entity_id: sensor.temperatur_balkon_temperature
-        device_id: bcaf45c49d8d9e5db975b2eaed17bb90
-        condition: device
-        above: !input temperature
+      - condition: numeric_state
+        entity_id: !input temperature_entity
+        above: !input temperature_transition_point
     then:
       - delay: !input duration_warm
     else:
       - delay: !input duration_cold
-
   - alias: Notify users that ventilation duration was exceeded
-    service: notify.mobile_app_michi_fairphone_4
+    service: !input notify_service
     data:
-      message: ! notification_msg
+      message: !input notification_msg
+      data:
+        tag: lueften-duration-exceeded-michi
+        sticky: true
+        channel: Lüften
 
 mode: restart
