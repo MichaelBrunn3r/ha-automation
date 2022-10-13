@@ -1,0 +1,75 @@
+blueprint:
+  name: Ventilation reminder
+  description: >
+    Notifies users if a window/door is left open too long when ventilating (Lüften).
+    Optimal ventilation duration is dependent on the outside temperature.
+  domain: automation
+  input:
+    friendly_name:
+      name: Human readable entity name
+      description: What the entity will be called in the notification
+      selector:
+        text:
+    duration_warm:
+      name: Warm temperature duration
+      description: Duration after which to trigger the reminder, if it is warm outside
+      default:
+        minutes: 15
+      selector:
+        duration:
+    duration_cold:
+      name: Cold temperature duration
+      description: Duration after which to trigger the reminder, if it is cold outside
+      default:
+        minutes: 5
+      selector:
+        duration:
+    temperature:
+      name: Boundary temperature
+      description: Temperature below which it is considered cold outside
+    notification_msg:
+      name: Notification Message
+      default: "{{ friendly_name }} was left open"
+      selector:
+        text:
+
+trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.luften_michael
+    from: "off"
+    to: "on"
+    id: off_to_on
+  - platform: state
+    entity_id:
+      - binary_sensor.luften_michael
+    from: "on"
+    to: "off"
+    id: on_to_off
+
+action:
+  - alias: Stop if ventilation stoped
+    if:
+      - condition: trigger
+        id: on_to_off
+    then:
+      - stop: Ventilation stoped
+  - alias: Timeout until maximum ventilation duration (temperature dependent) was exceeded
+    if:
+      - domain: sensor
+        type: is_temperature
+        entity_id: sensor.temperatur_balkon_temperature
+        device_id: bcaf45c49d8d9e5db975b2eaed17bb90
+        condition: device
+        above: !input temperature
+    then:
+      - delay: !input duration_warm
+    else:
+      - delay: !input duration_cold
+
+  - alias: Notify users that ventilation duration was exceeded
+    service: notify.mobile_app_michi_fairphone_4
+    data:
+      message: ! notification_msg
+
+mode: restart

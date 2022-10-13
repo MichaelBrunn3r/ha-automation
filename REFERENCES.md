@@ -12,3 +12,5 @@
 12. [How to parse command line arguments](https://nodejs.org/en/knowledge/command-line/how-to-parse-command-line-arguments/)
 13. [How to Watch for Files Changes in Node.js](https://thisdavej.com/how-to-watch-for-files-changes-in-node-js/)
 14. [YAML anchors](https://support.atlassian.com/bitbucket-cloud/docs/yaml-anchors/)
+15. [Notification if Door or Window is left open](https://community.home-assistant.io/t/notification-if-door-or-window-is-left-open/402851)
+16. [Notifications to close an open door or window after a set number of minutes](https://community.home-assistant.io/t/notifications-to-close-an-open-door-or-window-after-a-set-number-of-minutes/264599)
