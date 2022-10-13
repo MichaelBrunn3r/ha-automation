@@ -64,7 +64,17 @@ function watchSchemas() {
 const args = process.argv.slice(2);
 const watch = args.includes('--watch');
 
-console.log('Generating schemas...');
-glob.sync(`${schemasRoot}/**/*.schema.yaml`).forEach((file) => generateSchema(file));
+// console.log('Generating schemas...');
+// glob.sync(`${schemasRoot}/**/*.schema.yaml`).forEach((file) => generateSchema(file));
 
-watchSchemas();
+// watchSchemas();
+
+const haCoreRoot = 'submodules/ha-core';
+const haComponentsRoot = path.join(haCoreRoot, 'homeassistant/components');
+const defaultCfgManifest = JSON.parse(
+  fs.readFileSync(path.join(haComponentsRoot, 'default_config/manifest.json'), {
+    encoding: 'utf8'
+  })
+);
+
+console.log(defaultCfgManifest);
