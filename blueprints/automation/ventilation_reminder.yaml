@@ -46,10 +46,20 @@ blueprint:
       description: The service that will be called to deliver the notification (ie. notify.mobile_app_my_phone)
       default: "notify.mobile_app_YOURDEVICE"
       selector:
-        text:
+        template:
     notification_msg:
       name: Notification Message
       default: "Window was left open"
+      selector:
+        template:
+    notification_channel:
+      name: Notification Channel
+      default: ventilation
+      selector:
+        text:
+    notification_tag:
+      name: Notification Tag
+      description: Tag used to clear notification and prevent duplicate notifications
       selector:
         text:
 
@@ -77,7 +87,7 @@ action:
         data:
           message: clear_notification
           data:
-            tag: lueften-duration-exceeded-michi
+            tag: !input notification_tag
       - stop: Ventilation stoped
   - alias: Timeout until maximum ventilation duration (temperature dependent) was exceeded
     if:
@@ -93,8 +103,8 @@ action:
     data:
       message: !input notification_msg
       data:
-        tag: lueften-duration-exceeded-michi
+        tag: !input notification_tag
         sticky: true
-        channel: Lüften
+        channel: !input notification_channel
 
 mode: restart
