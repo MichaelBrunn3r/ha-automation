@@ -6,7 +6,8 @@ blueprint:
   domain: automation
   input:
     entity:
-      name: The entity that will trigger the automation. This must be a binary sensor (ie. binary_sensor.ventilating_living_room)
+      name: The entity that will trigger the automation
+      description: A binary sensor (e.g. binary_sensor.ventilating_living_room)
       selector:
         entity:
           domain: binary_sensor
