@@ -1,0 +1,95 @@
+blueprint:
+  name: Thermostat
+  domain: automation
+  input:
+    entity_thermostat:
+      name: Thermostat entity
+      description: The thermostat entity
+      selector:
+        entity:
+          multiple: true
+          domain: climate
+    entity_temperature_outside:
+      name: Outside temperature entity
+      description: The outside temperature entity
+      selector:
+        entity:
+          device_class: temperature
+    temperature_comfort:
+      name: Temperature Comfort
+      description: The temperature to set the thermostat to when in comfort mode
+      default: 21
+      selector:
+        number:
+          mode: slider
+          step: 0.5
+          min: 0
+          max: 30
+          unit_of_measurement: ˚C/˚F
+    temperature_eco:
+      name: Temperature Eco
+      description: The temperature to set the thermostat to when in eco mode
+      default: 19
+      selector:
+        number:
+          mode: slider
+          step: 0.5
+          min: 0
+          max: 30
+          unit_of_measurement: ˚C/˚F
+    temperature_away:
+      name: Temperature Away
+      description: The temperature to set the thermostat to when in away mode
+      default: 8
+      selector:
+        number:
+          mode: slider
+          step: 0.5
+          min: 0
+          max: 30
+          unit_of_measurement: ˚C/˚F
+    weekday_start_comfort:
+      name: Weekday start comfort mode
+      description: The time when the thermostat should switch to comfort mode
+      default: "8:00:00"
+      selector:
+        time:
+    weekday_end_comfort:
+      name: Weekday end comfort mode
+      description: The time when the thermostat should switch to eco mode
+      default: "23:00:00"
+      selector:
+        time:
+    weekend_start_comfort:
+      name: Weekend start comfort mode
+      description: The time when the thermostat should switch to comfort mode
+      default: "8:00:00"
+      selector:
+        time:
+    weekend_end_comfort:
+      name: Weekend end comfort mode
+      description: The time when the thermostat should switch to eco mode
+      default: "23:00:00"
+      selector:
+        time:
+
+trigger:
+  - platform: time
+    at: !input weekday_start_comfort
+    id: weekday_start
+  - platform: time
+    at: !input weekday_end_comfort
+    id: weekday_end
+  - platform: time
+    at: !input weekend_start_comfort
+    id: weekend_start
+  - platform: time
+    at: !input weekend_end_comfort
+    id: weekend_end
+
+action:
+  - if:
+      - condition: trigger
+        id: weekday_start
+
+mode: restart
